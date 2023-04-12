@@ -2,6 +2,9 @@ import { useState } from 'react'
 import { BackgroundImage } from '../components/BackgroundImage'
 import { FormField } from '../components/FormField'
 import { Header } from '../components/Header'
+import { createUserWithEmailAndPassword } from 'firebase/auth'
+import { auth } from '../utils/firebase'
+import { useNavigate } from 'react-router-dom'
 
 export const Signup = () => {
   const [showPassword, setShowPassword] = useState(false)
@@ -9,6 +12,7 @@ export const Signup = () => {
     email: '',
     password: ''
   })
+  const navigate = useNavigate()
 
   const handleFormChange = ({ target }) => {
     setForm({
@@ -17,8 +21,14 @@ export const Signup = () => {
     })
   }
 
-  const handleSignIn = () => {
-    console.log(form)
+  const handleSignIn = async () => {
+    try {
+      const { email, password } = form
+      await createUserWithEmailAndPassword(auth, email, password)
+      navigate('/login')
+    } catch (err) {
+      console.log(err)
+    }
   }
 
   return (
