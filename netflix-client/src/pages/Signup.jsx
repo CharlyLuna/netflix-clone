@@ -1,8 +1,26 @@
+import { useState } from 'react'
 import { BackgroundImage } from '../components/BackgroundImage'
 import { FormField } from '../components/FormField'
 import { Header } from '../components/Header'
 
 export const Signup = () => {
+  const [showPassword, setShowPassword] = useState(false)
+  const [form, setForm] = useState({
+    email: '',
+    password: ''
+  })
+
+  const handleFormChange = ({ target }) => {
+    setForm({
+      ...form,
+      [target.name]: target.value
+    })
+  }
+
+  const handleSignIn = () => {
+    console.log(form)
+  }
+
   return (
     <div className='relative'>
       <BackgroundImage />
@@ -13,15 +31,48 @@ export const Signup = () => {
         <div className='flex flex-col items-center justify-center
         gap-4'
         >
+          {/* TEXT */}
           <div className='flex flex-col gap-4 text-center'>
             <h1 className='font-extrabold text-2xl md:text-4xl px-8'>Unlimited movies, TV show and more</h1>
             <h4 className='text-lg md:text-2xl px-8'>Watch anywhere. Cancel anytime</h4>
             <h6 className='text-sm md:text-lg px-8'>Ready to watch? Enter your email to create or restart membership</h6>
           </div>
-          <FormField type='email' placeholder='Email Address' name='email' labelName='Email' />
-          <FormField type='password' placeholder='Password' name='password' labelName='Password' />
-          <button>Get Started</button>
-          <button>Log In</button>
+          {/* FORM INPUTS */}
+          <div className={`grid w-4/5 ${showPassword ? 'grid-cols-2' : 'grid-cols-[2fr_1fr]'}`}>
+            <FormField
+              type='email'
+              placeholder='Email Address'
+              name='email'
+              labelName={showPassword ? 'Email' : ''}
+              value={form.email}
+              handleChange={handleFormChange}
+            />
+            {showPassword && (
+              <FormField
+                type='password'
+                placeholder='Password'
+                name='password'
+                labelName='Password'
+                value={form.password}
+                handleChange={handleFormChange}
+              />
+            )}
+            {!showPassword && (
+              <button
+                className='form-button'
+                onClick={() => setShowPassword(true)}
+              >
+                Get Started
+              </button>
+            )}
+          </div>
+          {/* SIGN UP BUTTON */}
+          <button
+            className='form-button'
+            onClick={handleSignIn}
+          >
+            Sign Up
+          </button>
         </div>
       </div>
     </div>

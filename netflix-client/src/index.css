@@ -28,3 +28,9 @@ html,body {
 body::-webkit-scrollbar {
   display: none;
 }
+
+@layer components {
+  .form-button {
+    @apply py-2 px-4 bg-[#e50914] border-none cursor-pointer font-bold text-xs md:text-sm;
+  }
+}
