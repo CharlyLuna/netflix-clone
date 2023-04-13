@@ -12,6 +12,8 @@ export const Signup = () => {
     email: '',
     password: ''
   })
+  const [error, setError] = useState('')
+
   const navigate = useNavigate()
 
   const handleFormChange = ({ target }) => {
@@ -21,13 +23,19 @@ export const Signup = () => {
     })
   }
 
-  const handleSignIn = async () => {
+  const handleStartSignIn = () => {
+    if (form.email) setShowPassword(true)
+  }
+
+  const handleSignIn = async (e) => {
+    e.preventDefault()
     try {
       const { email, password } = form
       await createUserWithEmailAndPassword(auth, email, password)
       navigate('/login')
     } catch (err) {
       console.log(err)
+      setError(err.message)
     }
   }
 
@@ -48,7 +56,7 @@ export const Signup = () => {
             <h6 className='text-sm md:text-lg px-8'>Ready to watch? Enter your email to create or restart membership</h6>
           </div>
           {/* FORM INPUTS */}
-          <div className={`grid w-4/5 ${showPassword ? 'grid-cols-2' : 'grid-cols-[2fr_1fr]'}`}>
+          <form onSubmit={handleSignIn} className={`grid w-4/5 ${showPassword ? 'grid-cols-2' : 'grid-cols-[2fr_1fr]'}`}>
             <FormField
               type='email'
               placeholder='Email Address'
@@ -70,19 +78,24 @@ export const Signup = () => {
             {!showPassword && (
               <button
                 className='form-button'
-                onClick={() => setShowPassword(true)}
+                onClick={handleStartSignIn}
               >
                 Get Started
               </button>
             )}
-          </div>
-          {/* SIGN UP BUTTON */}
-          <button
-            className='form-button'
-            onClick={handleSignIn}
-          >
-            Sign Up
-          </button>
+            {error && <p className='text-red-400 col-span-2'>{error}</p>}
+            {/* SIGN UP BUTTON */}
+            {
+              showPassword && (
+                <button
+                  className='form-button mt-2 col-span-2'
+                  type='submit'
+                >
+                  Sign Up
+                </button>
+              )
+            }
+          </form>
         </div>
       </div>
     </div>
