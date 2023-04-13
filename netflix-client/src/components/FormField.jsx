@@ -3,7 +3,7 @@ export const FormField = ({
   handleChange
 }) => {
   return (
-    <div>
+    <div className='w-full'>
       {
         labelName && (
           <div className='flex items-center gap-2 mb-2'>
