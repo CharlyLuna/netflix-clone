@@ -51,12 +51,12 @@ export const Signup = () => {
         >
           {/* TEXT */}
           <div className='flex flex-col gap-4 text-center'>
-            <h1 className='font-extrabold text-2xl md:text-4xl px-8'>Unlimited movies, TV show and more</h1>
+            <h1 className='font-extrabold text-4xl md:text-6xl px-12 lg:px-32'>Unlimited movies, TV show and more</h1>
             <h4 className='text-lg md:text-2xl px-8'>Watch anywhere. Cancel anytime</h4>
             <h6 className='text-sm md:text-lg px-8'>Ready to watch? Enter your email to create or restart membership</h6>
           </div>
           {/* FORM INPUTS */}
-          <form onSubmit={handleSignIn} className={`grid w-4/5 ${showPassword ? 'grid-cols-2' : 'grid-cols-[2fr_1fr]'}`}>
+          <form onSubmit={handleSignIn} className={`grid w-4/5 lg:w-4/6 ${showPassword ? 'grid-cols-2' : 'grid-cols-[2fr_1fr]'}`}>
             <FormField
               type='email'
               placeholder='Email Address'
