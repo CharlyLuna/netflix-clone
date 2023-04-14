@@ -40,11 +40,11 @@ export const Login = () => {
         <Header login={false} />
         {/* FORM */}
         <div className='flex flex-col place-self-center items-center justify-center
-        h-[55%] lg:h-2/3'
+        h-[60%] lg:h-[70%] max-h-[500px]'
         >
           <form
-            className='flex flex-col items-center justify-evenly gap-2
-            bg-[#000000b0] px-6 py-2 w-[70vw] sm:w-[40vw] xl:w-[30vw] h-full'
+            className='flex flex-col items-center justify-center gap-8 bg-[#000000b0]
+            px-6 py-2 w-[70vw] md:w-[40vw] h-full max-w-md'
             onSubmit={handleLogIn}
           >
             <div className='font-bold text-xl md:text-2xl'>

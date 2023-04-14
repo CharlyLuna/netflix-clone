@@ -34,3 +34,22 @@ body::-webkit-scrollbar {
     @apply py-2 px-4 bg-[#e50914] border-none cursor-pointer font-bold text-xs md:text-sm;
   }
 }
+
+@layer components {
+  .show-search {
+    @apply border border-white border-solid bg-[rgba(0,0,0,0.6)];
+  }
+}
+
+@layer components {
+  .show-search-bar {
+    @apply visible opacity-100 w-full !important
+  }
+}
+
+@layer components {
+  .search-bar {
+    @apply w-0 opacity-0 invisible bg-transparent transition duration-300
+    ease-in-out border-none focus:outline-none;
+  }
+}
