@@ -1,13 +1,12 @@
-import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { FaSearch, FaSignOutAlt } from 'react-icons/fa'
+import { FaSignOutAlt } from 'react-icons/fa'
 import logo from '../assets/logo.png'
+import smallLogo from '../assets/logo-small.png'
 import { onAuthStateChanged, signOut } from 'firebase/auth'
 import { auth } from '../utils/firebase'
+import { Search } from './Search'
 
 export const Navbar = ({ isScrolled }) => {
-  const [showSearch, setShowSearch] = useState(false)
-  const [inputHover, setInputHover] = useState(false)
   const navigate = useNavigate()
 
   const links = [
@@ -16,10 +15,6 @@ export const Navbar = ({ isScrolled }) => {
     { name: 'Movies', link: '/movies' },
     { name: 'My List', link: '/mylist' }
   ]
-
-  const handleSearchUnFocus = () => {
-    if (!inputHover) setShowSearch(false)
-  }
 
   onAuthStateChanged(auth, currentUser => {
     if (!currentUser) navigate('/login')
@@ -34,12 +29,16 @@ export const Navbar = ({ isScrolled }) => {
         {/* LEFT SIDE OF NAVBAR */}
         <div className='flex items-center gap-2 md:gap-8'>
           <div className='flex items-center justify-center'>
-            <img className='h-16' src={logo} alt='Netflix logo' />
+            <picture>
+              <source media='(max-width: 767px)' srcSet={smallLogo} />
+              <source media='(min-width: 768px)' srcSet={logo} />
+              <img className='h-16' src={logo} alt='Chris standing up holding his daughter Elva' />
+            </picture>
           </div>
-          <ul className='flex list-none gap-8'>
+          <ul className='flex list-none gap-4 md:gap-8'>
             {
               links.map(({ name, link }) => (
-                <Link className='lg:text-xl' key={name} to={link}>{name}</Link>
+                <Link className='text-xs md:text-base lg:text-xl' key={name} to={link}>{name}</Link>
               ))
             }
           </ul>
@@ -47,31 +46,10 @@ export const Navbar = ({ isScrolled }) => {
         {/* RIGHT SIDE OF NAVBAR */}
         <div className='flex items-center gap-4 justify-end md:w-[28%] lg:w-auto'>
           {/* Search */}
-          <div className={`gap-2 p-1 hidden md:inline-flex
-          ${showSearch ? 'show-search' : ''}`}
-          >
-            <button
-              className='text-lg'
-              onFocus={() => setShowSearch(true)}
-              onBlur={handleSearchUnFocus}
-            >
-              <FaSearch />
-            </button>
-            <input
-              type='text'
-              placeholder='Search'
-              className={`search-bar ${showSearch ? 'show-search-bar' : ''}`}
-              onMouseEnter={() => setInputHover(true)}
-              onMouseLeave={() => setInputHover(false)}
-              onBlur={() => {
-                setShowSearch(false)
-                setInputHover(false)
-              }}
-            />
-          </div>
+          <Search />
           {/* Log out button */}
           <button
-            className='text-lg'
+            className='md:text-lg'
             onClick={() => signOut(auth)}
           >
             <FaSignOutAlt />
