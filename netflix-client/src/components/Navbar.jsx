@@ -35,10 +35,10 @@ export const Navbar = ({ isScrolled }) => {
               <img className='h-16' src={logo} alt='Chris standing up holding his daughter Elva' />
             </picture>
           </div>
-          <ul className='flex list-none gap-4 md:gap-8'>
+          <ul className='flex list-none gap-4 sm:gap-8'>
             {
               links.map(({ name, link }) => (
-                <Link className='text-xs md:text-base lg:text-xl' key={name} to={link}>{name}</Link>
+                <Link className='text-xs sm:text-base lg:text-xl' key={name} to={link}>{name}</Link>
               ))
             }
           </ul>
