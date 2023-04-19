@@ -22,23 +22,23 @@ export const Navbar = ({ isScrolled }) => {
 
   return (
     <div>
-      <nav className={`flex sticky top-0 h-24 w-screen justify-between
+      <nav className={`flex fixed top-0 h-24 w-screen justify-between
       z-10 px-6 lg:px-16 items-center transition ease-in-out duration-300
-      ${isScrolled ? 'bg-black' : ''}`}
+      ${isScrolled ? 'bg-black/95' : ''}`}
       >
         {/* LEFT SIDE OF NAVBAR */}
         <div className='flex items-center gap-2 md:gap-8'>
           <div className='flex items-center justify-center'>
-            <picture>
+            <picture onClick={() => console.log('go to home screen')}>
               <source media='(max-width: 767px)' srcSet={smallLogo} />
               <source media='(min-width: 768px)' srcSet={logo} />
-              <img className='h-16' src={logo} alt='Chris standing up holding his daughter Elva' />
+              <img className='h-16' src={logo} alt='Netflix logo' />
             </picture>
           </div>
           <ul className='flex list-none gap-4 sm:gap-8'>
             {
               links.map(({ name, link }) => (
-                <Link className='text-xs sm:text-base lg:text-xl' key={name} to={link}>{name}</Link>
+                <Link className='text-xs sm:text-base lg:text-xl first:max-md:hidden' key={name} to={link}>{name}</Link>
               ))
             }
           </ul>
