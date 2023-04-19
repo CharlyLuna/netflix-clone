@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import { Navbar } from '../components/Navbar'
+import { FaPlay } from 'react-icons/fa'
+import { AiOutlineInfoCircle } from 'react-icons/ai'
 
 export const Netflix = () => {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -13,8 +15,43 @@ export const Netflix = () => {
   }
 
   return (
-    <div>
+    <div className='bg-black'>
       <Navbar isScrolled={isScrolled} />
+      {/* TODO: Change the hardcoded image to one bring from API */}
+      {/* Image of popular serie */}
+      <div className='relative'>
+        <img
+          src='https://www.denofgeek.com/wp-content/uploads/2022/05/stranger-things-season-4-poster.jpeg'
+          alt='background'
+          className='brightness-75 w-screen h-[85vh] md:h-[80vh] object-cover'
+        />
+        {/* Serie info container */}
+        <div className='md:m-auto w-screen absolute bottom-20'>
+          {/* Serie name */}
+          <div className='text-5xl lg:text-6xl font-extrabold
+          m-4 md:ms-20 text-center md:text-start'
+          >
+            <h1>Stranger Things 4</h1>
+            {/* TODO: Change lorem for serie desc from API */}
+            <p className='text-base font-light w-3/5 xl:w-5/12 py-4 max-md:hidden'>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Id doloribus sequi, quae consectetur autem temporibus ex et numquam, officiis saepe qui harum sunt beatae
+            </p>
+          </div>
+          {/* Buttons */}
+          <div className='flex justify-center md:justify-start my-20 md:mx-20 md:my-10 gap-8'>
+            <button
+              className='teaser-buttons'
+            >
+              <FaPlay /> Play
+            </button>
+            <button
+              className='teaser-buttons'
+            >
+              <AiOutlineInfoCircle /> More info
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }

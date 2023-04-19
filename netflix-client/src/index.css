@@ -29,27 +29,31 @@ body::-webkit-scrollbar {
   display: none;
 }
 
+/* Form buttons component */
 @layer components {
   .form-button {
     @apply py-2 px-4 bg-[#e50914] border-none cursor-pointer font-bold text-xs md:text-sm;
   }
 }
-
+/* Search component */
 @layer components {
   .show-search {
     @apply border border-white border-solid bg-[rgba(0,0,0,0.6)];
   }
-}
-
-@layer components {
   .show-search-bar {
     @apply visible opacity-100 w-full !important
   }
-}
-
-@layer components {
   .search-bar {
     @apply w-0 opacity-0 invisible bg-transparent transition duration-300
     ease-in-out border-none focus:outline-none;
+  }
+}
+
+/* Home teaser buttons component */
+@layer components {
+  .teaser-buttons {
+    @apply flex justify-center items-center text-lg md:text-2xl gap-4 rounded-md
+  bg-white py-2 px-6 transition duration-300 first-of-type:text-black
+    ease-in-out hover:opacity-80 last-of-type:bg-[rgba(109,109,110,0.7)]
   }
 }
