@@ -2,9 +2,12 @@ import { useState } from 'react'
 import { Navbar } from '../components/Navbar'
 import { FaPlay } from 'react-icons/fa'
 import { AiOutlineInfoCircle } from 'react-icons/ai'
+import { useNavigate } from 'react-router-dom'
 
 export const Netflix = () => {
   const [isScrolled, setIsScrolled] = useState(false)
+  const navigate = useNavigate()
+
   window.onscroll = () => {
     if (window.pageYOffset === 0) {
       setIsScrolled(false)
@@ -41,6 +44,7 @@ export const Netflix = () => {
           <div className='flex justify-center md:justify-start my-20 md:mx-20 md:my-10 gap-8'>
             <button
               className='teaser-buttons'
+              onClick={() => navigate('/player')}
             >
               <FaPlay /> Play
             </button>
