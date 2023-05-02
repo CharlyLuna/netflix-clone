@@ -3,11 +3,13 @@ import { Navbar } from '../components/Navbar'
 import { FaPlay } from 'react-icons/fa'
 import { AiOutlineInfoCircle } from 'react-icons/ai'
 import { useNavigate } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
-import { getGenres } from '../store'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchMovies, getGenres } from '../store'
 
 export const Netflix = () => {
   const [isScrolled, setIsScrolled] = useState(false)
+  const genresLoaded = useSelector(state => state.netflix.genresLoaded)
+  const movies = useSelector(state => state.netflix.movies)
   const navigate = useNavigate()
 
   const dispatch = useDispatch()
@@ -15,6 +17,10 @@ export const Netflix = () => {
   useEffect(() => {
     dispatch(getGenres())
   }, [])
+
+  useEffect(() => {
+    if (genresLoaded) dispatch(fetchMovies({ type: 'all' }))
+  }, [genresLoaded])
 
   window.onscroll = () => {
     if (window.pageYOffset === 0) {
@@ -24,6 +30,7 @@ export const Netflix = () => {
     }
     return () => (window.onscroll = null)
   }
+  console.log(movies)
 
   return (
     <div className='bg-black'>
@@ -34,7 +41,7 @@ export const Netflix = () => {
         <img
           src='https://www.denofgeek.com/wp-content/uploads/2022/05/stranger-things-season-4-poster.jpeg'
           alt='background'
-          className='brightness-75 w-screen h-[85vh] md:h-[80vh] object-cover'
+          className='brightness-75 w-screen h-[90vh] object-cover'
         />
         {/* Serie info container */}
         <div className='md:m-auto w-screen absolute bottom-20'>
