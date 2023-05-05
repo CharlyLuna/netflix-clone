@@ -5,6 +5,7 @@ import { AiOutlineInfoCircle } from 'react-icons/ai'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchMovies, getGenres } from '../store'
+import { Slider } from '../components/Slider'
 
 export const Netflix = () => {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -30,7 +31,6 @@ export const Netflix = () => {
     }
     return () => (window.onscroll = null)
   }
-  console.log(movies)
 
   return (
     <div className='bg-black'>
@@ -71,6 +71,7 @@ export const Netflix = () => {
           </div>
         </div>
       </div>
+      <Slider movies={movies} />
     </div>
   )
 }
