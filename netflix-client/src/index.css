@@ -61,7 +61,7 @@ body::-webkit-scrollbar {
 /* Card buttons */
 @layer components {
   .card-buttons {
-    @apply text-xl transition duration-300 ease-in-out hover:text-[#b8b8b8]
+    @apply text-lg lg:text-2xl transition duration-300 ease-in-out hover:text-[#b8b8b8]
   }
 }
 

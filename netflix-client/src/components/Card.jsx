@@ -15,22 +15,28 @@ export const Card = ({ movie, isLiked = false }) => {
         src={`https://image.tmdb.org/t/p/w500${image}`}
         alt={`${name} poster`}
         className='cursor-pointer object-cover transition duration delay-300
-        shadow-xl rounded group-hover:opacity-90 sm:group-hover:opacity-0
-        w-full h-[12vw]'
+        shadow-xl rounded group-hover:opacity-90 md:group-hover:opacity-0
+        w-full h-[24vw] md:h-[14vw]'
       />
       {/* Hovered card */}
       <div className='opacity-0 absolute top-0 transition duration-200
-      z-10 invisible sm:visible delay-300 w-full scale-0 group-hover:scale-110
-      group-hover:-translate-y-[6vw] group-hover:-translate-x-[2vw]
+      z-10 max-md:hidden delay-300 w-full scale-0 group-hover:scale-110
+      group-hover:-translate-y-[6vw] group-hover:-translate-x-[1vw]
       group-hover:opacity-100'
       >
+        <img
+          src={`https://image.tmdb.org/t/p/w500${image}`}
+          onClick={() => navigate('/player')}
+          className='absolute cursor-pointer w-full transition duration object-cover
+            shadow-xl rounded-t h-[12vw]'
+        />
         <video
           src={defaultVideo}
           autoPlay
           muted
           loop
           onClick={() => navigate('/player')}
-          className='cursor-pointer w-full transition duration object-cover
+          className='relative cursor-pointer w-full transition duration object-cover
           shadow-xl rounded-t h-[12vw]'
         />
         {/* Info of movie */}
@@ -66,10 +72,10 @@ export const Card = ({ movie, isLiked = false }) => {
           <div className='flex flex-row mt-4 items-center'>
             <ul className='flex gap-2'>
               {
-                  genres.map(genre => (
-                    <li className='text-xs lg:text-sm' key={genre}>{genre}</li>
-                  ))
-                }
+                genres.map(genre => (
+                  <li className='text-xs lg:text-sm' key={genre}>{genre}</li>
+                ))
+              }
             </ul>
           </div>
         </div>
