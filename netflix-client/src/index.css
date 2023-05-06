@@ -57,3 +57,31 @@ body::-webkit-scrollbar {
     ease-in-out hover:opacity-80 last-of-type:bg-[rgba(109,109,110,0.7)]
   }
 }
+
+/* Card buttons */
+@layer components {
+  .card-buttons {
+    @apply text-xl transition duration-300 ease-in-out hover:text-[#b8b8b8]
+  }
+}
+
+/* Slider actions */
+@layer components {
+  .slider-action {
+    @apply absolute z-50 h-full top-0 bottom-0 w-12 transition duration-300 ease-in-out
+    text-4xl
+  }
+}
+
+/* Scroll visibility */
+
+/* For Webkit-based browsers (Chrome, Safari and Opera) */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* For IE, Edge and Firefox */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}

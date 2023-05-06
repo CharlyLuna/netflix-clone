@@ -1,82 +1,79 @@
-import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { IoPlayCircleSharp } from 'react-icons/io5'
 import { RiThumbDownFill, RiThumbUpFill } from 'react-icons/ri'
-import { BsCheck } from 'react-icons/bs'
+import { BsCheck, BsFillPlayFill } from 'react-icons/bs'
 import { AiOutlinePlus } from 'react-icons/ai'
 import { BiChevronDown } from 'react-icons/bi'
 import defaultVideo from '../assets/netflix-intro.mp4'
 
 export const Card = ({ movie, isLiked = false }) => {
-  const [isHovered, setIsHovered] = useState(false)
   const { id, image, name, genres } = movie
   const navigate = useNavigate()
 
   return (
-    <div
-      onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}
-      className='max-w-[240px] w-60 h-full cursor-pointer relative'
-    >
+    <div className='group bg-zinc-900 col-span relative h-[12vw]'>
       <img
         src={`https://image.tmdb.org/t/p/w500${image}`}
         alt={`${name} poster`}
-        className='rounded w-full h-full z-10'
+        className='cursor-pointer object-cover transition duration delay-300
+        shadow-xl rounded group-hover:opacity-90 sm:group-hover:opacity-0
+        w-full h-[12vw]'
       />
-      {
-        isHovered && (
-          <div className='z-50 h-max w-80 absolute top-[-18vh] left-0 rounded
-          shadow-md bg-[#181818] transition duration-300 ease-out'
-          >
-            <div className='relative h-36'>
-              <img
-                src={`https://image.tmdb.org/t/p/w500${image}`}
-                alt={`${name} poster`}
-                onClick={() => navigate('/player')}
-                className='w-full h-36 object-cover rounded top-0 z-[4] absolute'
-              />
-              <video
-                src={defaultVideo}
-                autoPlay
-                muted
-                loop
-                onClick={() => navigate('/player')}
-                className='w-full h-36 object-cover rounded top-0 z-[5] absolute'
-              />
+      {/* Hovered card */}
+      <div className='opacity-0 absolute top-0 transition duration-200
+      z-10 invisible sm:visible delay-300 w-full scale-0 group-hover:scale-110
+      group-hover:-translate-y-[6vw] group-hover:-translate-x-[2vw]
+      group-hover:opacity-100'
+      >
+        <video
+          src={defaultVideo}
+          autoPlay
+          muted
+          loop
+          onClick={() => navigate('/player')}
+          className='cursor-pointer w-full transition duration object-cover
+          shadow-xl rounded-t h-[12vw]'
+        />
+        {/* Info of movie */}
+        <div className='z-10 bg-zinc-800 p-2 lg:p-4 absolute w-full
+        transition shadow rounded-b'
+        >
+          {/* Buttons */}
+          <div className='flex flex-row items-center gap-3'>
+            <div className='cursor-pointer w-6 h-6 lg:w-10 lg:h-10 bg-white
+            rounded-full flex justify-center items-center transition
+            hover:bg-neutral-300'
+            >
+              <BsFillPlayFill className='card-buttons text-black' title='Play' onClick={() => navigate('/player')} />
             </div>
-            <div className='info-container flex flex-col'>
-              <h1 className='name'>{name}</h1>
-            </div>
-            <div className='icons flex justify-between'>
-              <div className='controls flex'>
-                <IoPlayCircleSharp title='Play' onClick={() => navigate('/player')} />
-                <RiThumbUpFill title='Like' />
-                <RiThumbDownFill title='Dislike' />
-                {
+            <div className='flex gap-4 text-white'>
+              <RiThumbUpFill className='card-buttons' title='Like' />
+              <RiThumbDownFill className='card-buttons' title='Dislike' />
+              {
                   isLiked
                     ? (
-                      <BsCheck title='Remove from list' />
+                      <BsCheck className='card-buttons' title='Remove from list' />
                       )
                     : (
-                      <AiOutlinePlus title='Add to my list' />
+                      <AiOutlinePlus className='card-buttons' title='Add to my list' />
                       )
                 }
-              </div>
-              <div className='info'>
-                <BiChevronDown title='More info' />
-              </div>
-            </div>
-            <div className='genres flex'>
-              <ul className='flex'>
-                {
-                  genres.map(genre => (
-                    <li key={genre}>{genre}</li>
-                  ))
-                }
-              </ul>
+              <BiChevronDown className='card-buttons' title='More info' />
             </div>
           </div>
-        )
-      }
+          {/* Movie title */}
+          <h1 className='w-full truncate pr-4 mt-4'>{name}</h1>
+          {/* Genres */}
+          <div className='flex flex-row mt-4 items-center'>
+            <ul className='flex gap-2'>
+              {
+                  genres.map(genre => (
+                    <li className='text-xs lg:text-sm' key={genre}>{genre}</li>
+                  ))
+                }
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }

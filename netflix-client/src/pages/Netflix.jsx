@@ -33,7 +33,7 @@ export const Netflix = () => {
   }
 
   return (
-    <div className='bg-black'>
+    <div className='bg-zinc-900'>
       <Navbar isScrolled={isScrolled} />
       {/* TODO: Change the hardcoded image to one bring from API */}
       {/* Image of popular serie */}
