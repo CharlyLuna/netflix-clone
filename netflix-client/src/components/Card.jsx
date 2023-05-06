@@ -10,7 +10,7 @@ export const Card = ({ movie, isLiked = false }) => {
   const navigate = useNavigate()
 
   return (
-    <div className='group bg-zinc-900 col-span relative h-[12vw]'>
+    <div className='group bg-zinc-900 col-span relative inline-block pr-4'>
       <img
         src={`https://image.tmdb.org/t/p/w500${image}`}
         alt={`${name} poster`}

@@ -6,7 +6,7 @@ export const Slider = ({ movies }) => {
   }
 
   return (
-    <div className='bg-zinc-900'>
+    <div className='bg-zinc-900 pb-16'>
       <CardSlider title='Trending now' data={getMoviesFromRange(0, 10)} />
       <CardSlider title='New Releases' data={getMoviesFromRange(10, 20)} />
       <CardSlider title='Blockbuster Movies' data={getMoviesFromRange(20, 30)} />
