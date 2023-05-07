@@ -18,10 +18,11 @@ export const Card = ({ movie, isLiked = false }) => {
         shadow-xl rounded group-hover:opacity-90 md:group-hover:opacity-0
         w-full h-[24vw] md:h-[14vw]'
       />
+      <p className='text-xs md:hidden w-[35vw] truncate mt-1'>{name}</p>
       {/* Hovered card */}
       <div className='opacity-0 absolute top-0 transition duration-200
       z-10 max-md:hidden delay-300 w-full scale-0 group-hover:scale-110
-      group-hover:-translate-y-[6vw] group-hover:-translate-x-[1vw]
+      group-hover:-translate-y-[6vw] group-hover:-translate-x-[-1vw]
       group-hover:opacity-100'
       >
         <img

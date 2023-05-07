@@ -8,16 +8,16 @@ export const CardSlider = ({ data, title }) => {
   const listRef = useRef()
 
   // Todo: Change this useEffect, need a better way to reset the values on a resize of screen
-  useEffect(() => {
-    function handleResize () {
-      listRef.current.style.transform = 'translateX(0px)'
-      setSlideNumber(0)
-      console.log('translated items')
-    }
+  // useEffect(() => {
+  //   function handleResize () {
+  //     listRef.current.style.transform = 'translateX(0px)'
+  //     setSlideNumber(0)
+  //     console.log('translated items')
+  //   }
 
-    window.addEventListener('resize', handleResize)
-    return () => window.removeEventListener('resize', handleResize)
-  }, [])
+  //   window.addEventListener('resize', handleResize)
+  //   return () => window.removeEventListener('resize', handleResize)
+  // }, [])
 
   const handleDirection = (direction) => {
     const itemWidth = window.innerWidth * 25 / 100
@@ -42,13 +42,14 @@ export const CardSlider = ({ data, title }) => {
         onMouseEnter={() => setShowControls(true)}
         onMouseLeave={() => setShowControls(false)}
       >
-        <div className={`slider-action left-0 ${!showControls ? 'hidden' : ''}
-        flex justify-center items-center max-md:hidden`}
+        <div className={`slider-action -left-12 ${!showControls ? 'hidden' : ''}
+        flex justify-center items-center max-md:hidden cursor-pointer`}
         >
           <AiOutlineLeft onClick={() => handleDirection('left')} />
         </div>
         <div
-          className='max-md:overflow-x-scroll scroll whitespace-nowrap scrollbar-hide' ref={listRef}
+          className='max-md:overflow-x-scroll scroll whitespace-nowrap scrollbar-hide translate-x-0'
+          ref={listRef}
         >
           {
           data.map((movie, index) => (
@@ -57,7 +58,7 @@ export const CardSlider = ({ data, title }) => {
         }
         </div>
         <div className={`slider-action right-0 ${!showControls ? 'hidden' : ''}
-        flex justify-center items-center max-md:hidden`}
+        flex justify-center items-center max-md:hidden cursor-pointer`}
         >
           <AiOutlineRight onClick={() => handleDirection('right')} />
         </div>
