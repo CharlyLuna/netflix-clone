@@ -25,14 +25,9 @@ export const Card = ({ movie, isLiked = false }) => {
       group-hover:-translate-y-[6vw] group-hover:-translate-x-[-1vw]
       group-hover:opacity-100'
       >
-        <img
-          src={`https://image.tmdb.org/t/p/w500${image}`}
-          onClick={() => navigate('/player')}
-          className='absolute cursor-pointer w-full transition duration object-cover
-            shadow-xl rounded-t h-[12vw]'
-        />
         <video
           src={defaultVideo}
+          poster={`https://image.tmdb.org/t/p/w500${image}`}
           autoPlay
           muted
           loop

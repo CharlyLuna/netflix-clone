@@ -5,9 +5,11 @@ import smallLogo from '../assets/logo-small.png'
 import { onAuthStateChanged, signOut } from 'firebase/auth'
 import { auth } from '../utils/firebase'
 import { Search } from './Search'
+import { useEffect, useState } from 'react'
 
-export const Navbar = ({ isScrolled }) => {
+export const Navbar = () => {
   const navigate = useNavigate()
+  const [isScrolled, setIsScrolled] = useState(false)
 
   const links = [
     { name: 'Home', link: '/' },
@@ -15,6 +17,20 @@ export const Navbar = ({ isScrolled }) => {
     { name: 'Movies', link: '/movies' },
     { name: 'My List', link: '/mylist' }
   ]
+
+  useEffect(() => {
+    const handleScroll = (e) => {
+      const window = e.currentTarget
+      if (window.scrollY === 0) {
+        setIsScrolled(false)
+      } else {
+        setIsScrolled(true)
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   onAuthStateChanged(auth, currentUser => {
     if (!currentUser) navigate('/login')
