@@ -61,6 +61,18 @@ export const fetchMovies = createAsyncThunk(
     return data
   })
 
+export const fetchDataByGenre = createAsyncThunk(
+  'netflix/moviesByGenre',
+  async ({ genre, type }, thunkApi) => {
+    const { netflix: { genres } } = thunkApi.getState()
+    const data = await getRawData(
+      `${BASE_URL}/discover/${type}?api_key=${KEY}&with_genres=${genre}`,
+      genres,
+      true
+    )
+    return data
+  })
+
 const NetflixSlice = createSlice({
   name: 'Netflix',
   initialState,
@@ -70,6 +82,9 @@ const NetflixSlice = createSlice({
       state.genresLoaded = true
     })
     builder.addCase(fetchMovies.fulfilled, (state, action) => {
+      state.movies = action.payload
+    })
+    builder.addCase(fetchDataByGenre.fulfilled, (state, action) => {
       state.movies = action.payload
     })
   }
