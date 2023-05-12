@@ -15,7 +15,7 @@ export const Netflix = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(getGenres())
+    if (!genresLoaded) dispatch(getGenres())
   }, [])
 
   useEffect(() => {

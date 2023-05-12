@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchMovies, getGenres } from '../store'
+import { fetchDataByGenre, getGenres } from '../store'
 import { Navbar } from '../components/Navbar'
 import { Slider } from '../components/Slider'
 import { NotAvailable } from '../components/NotAvailable'
@@ -14,11 +14,11 @@ export const Movies = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(getGenres())
+    if (!genresLoaded) dispatch(getGenres())
   }, [])
 
   useEffect(() => {
-    if (genresLoaded) dispatch(fetchMovies({ type: 'movie' }))
+    if (genresLoaded) dispatch(fetchDataByGenre({ genre: genres[0].name, type: 'movie' }))
   }, [genresLoaded])
 
   return (
