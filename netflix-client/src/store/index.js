@@ -8,7 +8,10 @@ import axios from 'axios'
 const initialState = {
   movies: [],
   genresLoaded: false,
-  genres: []
+  genres: [],
+  tvShows: [],
+  tvGenresLoaded: false,
+  tvGenres: []
 }
 
 const BASE_URL = import.meta.env.VITE_TMDB_URL
@@ -16,6 +19,11 @@ const KEY = import.meta.env.VITE_API_KEY
 
 export const getGenres = createAsyncThunk('netflix/genres', async () => {
   const { data: { genres } } = await axios(`${BASE_URL}/genre/movie/list?api_key=${KEY}`)
+  return genres
+})
+
+export const getTVGenres = createAsyncThunk('netflix/tv_genres', async () => {
+  const { data: { genres } } = await axios(`${BASE_URL}/genre/tv/list?api_key=${KEY}`)
   return genres
 })
 
@@ -73,6 +81,18 @@ export const fetchDataByGenre = createAsyncThunk(
     return data
   })
 
+export const fetchTVDataByGenre = createAsyncThunk(
+  'netflix/tvShowsByGenre',
+  async ({ genre, type }, thunkApi) => {
+    const { netflix: { tvGenres } } = thunkApi.getState()
+    const data = await getRawData(
+      `${BASE_URL}/discover/${type}?api_key=${KEY}&with_genres=${genre}`,
+      tvGenres,
+      true
+    )
+    return data
+  })
+
 const NetflixSlice = createSlice({
   name: 'Netflix',
   initialState,
@@ -86,6 +106,13 @@ const NetflixSlice = createSlice({
     })
     builder.addCase(fetchDataByGenre.fulfilled, (state, action) => {
       state.movies = action.payload
+    })
+    builder.addCase(fetchTVDataByGenre.fulfilled, (state, action) => {
+      state.tvShows = action.payload
+    })
+    builder.addCase(getTVGenres.fulfilled, (state, action) => {
+      state.tvGenres = action.payload
+      state.tvGenresLoaded = true
     })
   }
 })
