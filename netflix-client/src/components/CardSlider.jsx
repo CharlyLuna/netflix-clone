@@ -8,16 +8,16 @@ export const CardSlider = ({ data, title }) => {
   const listRef = useRef()
 
   // Todo: Change this useEffect, need a better way to reset the values on a resize of screen
-  // useEffect(() => {
-  //   function handleResize () {
-  //     listRef.current.style.transform = 'translateX(0px)'
-  //     setSlideNumber(0)
-  //     console.log('translated items')
-  //   }
+  useEffect(() => {
+    function handleResize () {
+      listRef.current.style.transform = 'translateX(0px)'
+      setSlideNumber(0)
+      console.log('translated items')
+    }
 
-  //   window.addEventListener('resize', handleResize)
-  //   return () => window.removeEventListener('resize', handleResize)
-  // }, [])
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
 
   const handleDirection = (direction) => {
     const itemWidth = window.innerWidth * 25 / 100
