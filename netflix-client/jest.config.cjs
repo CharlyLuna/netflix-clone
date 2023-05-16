@@ -9,6 +9,7 @@ module.exports = {
     '^.+\\.module\\.(css|sass|scss)$'
   ],
   moduleNameMapper: {
-    '\\.(mp4)$': '<rootDir>/tests/__mocks__/fileMock.js'
+    '\\.(mp4)$': '<rootDir>/tests/__mocks__/fileMock.js',
+    '\\.(png)$': '<rootDir>/tests/__mocks__/fileMock.js'
   }
 }
