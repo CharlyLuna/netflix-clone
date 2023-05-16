@@ -12,6 +12,7 @@ export const Card = ({ movie, isLiked = false }) => {
   return (
     <div className='group bg-zinc-900 col-span relative inline-block pr-4'>
       <img
+        data-testid='img-card'
         src={`https://image.tmdb.org/t/p/w500${image}`}
         alt={`${name} poster`}
         className='cursor-pointer object-cover transition duration delay-300
