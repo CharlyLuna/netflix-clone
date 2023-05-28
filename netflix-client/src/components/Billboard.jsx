@@ -1,10 +1,13 @@
 import { AiOutlineInfoCircle } from 'react-icons/ai'
 import { FaPlay } from 'react-icons/fa'
+import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import { currentPlaying } from '../store'
 
 export const Billboard = ({ movie }) => {
   const navigate = useNavigate()
-  const { id, name, image, overview } = movie
+  const { id, name, image, overview, type } = movie
+  const dispatch = useDispatch()
 
   return (
     <div className='relative'>
@@ -29,7 +32,10 @@ export const Billboard = ({ movie }) => {
         <div className='flex justify-center md:justify-start my-20 md:mx-20 md:my-10 gap-8'>
           <button
             className='teaser-buttons'
-            onClick={() => navigate('/player')}
+            onClick={() => {
+              navigate('/player')
+              dispatch(currentPlaying({ type, id }))
+            }}
           >
             <FaPlay /> Play
           </button>

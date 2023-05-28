@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { FaSignOutAlt } from 'react-icons/fa'
 import logo from '../assets/logo.png'
 import smallLogo from '../assets/logo-small.png'
@@ -9,6 +9,7 @@ import { useEffect, useState } from 'react'
 
 export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false)
+  const navigate = useNavigate()
 
   const links = [
     { name: 'Home', link: '/' },
@@ -40,7 +41,7 @@ export const Navbar = () => {
         {/* LEFT SIDE OF NAVBAR */}
         <div className='flex items-center gap-2 md:gap-8'>
           <div className='flex items-center justify-center'>
-            <picture onClick={() => console.log('go to home screen')}>
+            <picture onClick={() => navigate('/')}>
               <source media='(max-width: 767px)' srcSet={smallLogo} />
               <source media='(min-width: 768px)' srcSet={logo} />
               <img className='h-16' src={logo} alt='Netflix logo' />

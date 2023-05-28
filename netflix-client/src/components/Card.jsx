@@ -4,10 +4,13 @@ import { BsCheck, BsFillPlayFill } from 'react-icons/bs'
 import { AiOutlinePlus } from 'react-icons/ai'
 import { BiChevronDown } from 'react-icons/bi'
 import defaultVideo from '../assets/netflix-intro.mp4'
+import { currentPlaying } from '../store'
+import { useDispatch } from 'react-redux'
 
 export const Card = ({ movie, isLiked = false }) => {
-  const { id, image, name, genres } = movie
+  const { id, type, image, name, genres } = movie
   const navigate = useNavigate()
+  const dispatch = useDispatch()
 
   return (
     <div className='group bg-zinc-900 col-span relative inline-block pr-4'>
@@ -32,7 +35,10 @@ export const Card = ({ movie, isLiked = false }) => {
           autoPlay
           muted
           loop
-          onClick={() => navigate('/player')}
+          onClick={() => {
+            navigate('/player')
+            dispatch(currentPlaying({ type, id }))
+          }}
           className='relative cursor-pointer w-full transition duration object-cover
           shadow-xl rounded-t h-[12vw]'
         />
@@ -46,7 +52,12 @@ export const Card = ({ movie, isLiked = false }) => {
             rounded-full flex justify-center items-center transition
             hover:bg-neutral-300'
             >
-              <BsFillPlayFill className='card-buttons text-black' title='Play' onClick={() => navigate('/player')} />
+              <BsFillPlayFill
+                className='card-buttons text-black' title='Play' onClick={() => {
+                  navigate('/player')
+                  dispatch(currentPlaying({ type, id }))
+                }}
+              />
             </div>
             <div className='flex gap-4 text-white'>
               <RiThumbUpFill className='card-buttons' title='Like' />

@@ -11,7 +11,8 @@ const initialState = {
   genres: [],
   tvShows: [],
   tvGenresLoaded: false,
-  tvGenres: []
+  tvGenres: [],
+  currentPlaying: {}
 }
 
 const BASE_URL = import.meta.env.VITE_TMDB_URL
@@ -51,7 +52,8 @@ const createArrayFromRawData = (results, moviesArray, genres) => {
         name: movie?.original_name ? movie.original_name : movie.original_title,
         image: movie.backdrop_path,
         genres: movieGenres.slice(0, 3),
-        overview: movie.overview
+        overview: movie.overview,
+        type: movie.media_type
       })
     }
   })
@@ -96,6 +98,11 @@ export const fetchTVDataByGenre = createAsyncThunk(
 const NetflixSlice = createSlice({
   name: 'Netflix',
   initialState,
+  reducers: {
+    currentPlaying: (state, action) => {
+      state.currentPlaying = action.payload
+    }
+  },
   extraReducers: (builder) => {
     builder.addCase(getGenres.fulfilled, (state, action) => {
       state.genres = action.payload
@@ -116,6 +123,8 @@ const NetflixSlice = createSlice({
     })
   }
 })
+
+export const { currentPlaying } = NetflixSlice.actions
 
 export const store = configureStore({
   reducer: {
