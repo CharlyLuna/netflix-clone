@@ -1,14 +1,13 @@
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { FaSignOutAlt } from 'react-icons/fa'
 import logo from '../assets/logo.png'
 import smallLogo from '../assets/logo-small.png'
-import { onAuthStateChanged, signOut } from 'firebase/auth'
+import { signOut } from 'firebase/auth'
 import { auth } from '../utils/firebase'
 import { Search } from './Search'
 import { useEffect, useState } from 'react'
 
 export const Navbar = () => {
-  const navigate = useNavigate()
   const [isScrolled, setIsScrolled] = useState(false)
 
   const links = [
@@ -31,10 +30,6 @@ export const Navbar = () => {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
-
-  onAuthStateChanged(auth, currentUser => {
-    if (!currentUser) navigate('/login')
-  })
 
   return (
     <div>
