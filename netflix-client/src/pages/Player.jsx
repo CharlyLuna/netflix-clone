@@ -47,8 +47,16 @@ export const Player = () => {
         >
           <BsArrowLeft />
         </button>
-        {/* <video className='h-full w-full object-cover' src={video} autoPlay loop controls muted /> */}
-        <ReactPlayer width='100%' height='100%' url={video} playing loop muted />
+        {
+          video !== defaultVideo
+            ? (
+
+              <ReactPlayer width='100%' height='100%' url={video} playing loop muted />
+              )
+            : (
+              <video className='h-full w-full object-cover' src={video} autoPlay loop controls muted />
+              )
+        }
       </div>
     </div>
   )
