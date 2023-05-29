@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import {
-  Login, Netflix, Signup, Player, Movies, TVShows, MyList
+  Login, Netflix, Signup, Player, Movies, TVShows, MyList, Details
 } from './pages/'
 import { ProtectedRoute } from './components/ProtectedRoute'
 
@@ -15,6 +15,7 @@ const App = () => {
           <Route path='/movies' element={<Movies />} />
           <Route path='/tv' element={<TVShows />} />
           <Route path='/mylist' element={<MyList />} />
+          <Route path='/details' element={<Details />} />
           <Route path='/' element={<Netflix />} />
         </Route>
       </Routes>

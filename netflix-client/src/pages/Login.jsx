@@ -12,6 +12,7 @@ export const Login = () => {
     password: ''
   })
   const navigate = useNavigate()
+  const [error, setError] = useState(null)
 
   const handleFormChange = ({ target }) => {
     setForm({
@@ -27,6 +28,7 @@ export const Login = () => {
       await signInWithEmailAndPassword(auth, email, password)
       navigate('/')
     } catch (err) {
+      setError(err.message)
       console.log(err)
     }
   }
@@ -42,14 +44,20 @@ export const Login = () => {
         <div className='flex flex-col place-self-center items-center justify-center
         h-[60%] lg:h-[70%] max-h-[500px]'
         >
+
           <form
-            className='flex flex-col items-center justify-center gap-8 bg-[#000000b0]
-            px-6 py-2 w-[70vw] md:w-[40vw] h-full max-w-md'
+            className={`flex flex-col items-center justify-center ${error ? 'gap-4' : 'gap-8'} bg-[#000000b0]
+            px-6 py-2 w-[70vw] md:w-[40vw] h-full max-w-md `}
             onSubmit={handleLogIn}
           >
             <div className='font-bold text-xl md:text-2xl'>
               <h1>Login</h1>
             </div>
+            {error && (
+              <p className='text-red-500 text-center'>
+                Data is incorrect.
+              </p>
+            )}
             {/* FORM INPUTS */}
             <FormField
               type='email'

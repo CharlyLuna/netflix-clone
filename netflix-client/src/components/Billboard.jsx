@@ -41,6 +41,9 @@ export const Billboard = ({ movie }) => {
           </button>
           <button
             className='teaser-buttons'
+            onClick={() => {
+              navigate('/details')
+            }}
           >
             <AiOutlineInfoCircle /> More info
           </button>
