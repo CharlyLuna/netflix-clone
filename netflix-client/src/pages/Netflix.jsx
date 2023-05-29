@@ -10,7 +10,7 @@ import { DEFAULT_MOVIE, HOMEPAGE_TITLES } from '../utils/constants'
 export const Netflix = () => {
   const genresLoaded = useSelector(state => state.netflix.genresLoaded)
   const movies = useSelector(state => state.netflix.movies)
-  const randomMovie = getRandomMovie(movies)
+  const randomMovie = movies ? getRandomMovie(movies) : null
 
   const dispatch = useDispatch()
 
@@ -32,7 +32,7 @@ export const Netflix = () => {
         : (
           <Billboard movie={DEFAULT_MOVIE} />
           )}
-      <Slider movies={movies} titles={HOMEPAGE_TITLES} />
+      <Slider movies={movies ?? []} titles={HOMEPAGE_TITLES} />
     </div>
   )
 }
