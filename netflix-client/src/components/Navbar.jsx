@@ -1,11 +1,11 @@
 import { Link, useNavigate } from 'react-router-dom'
-import { FaSignOutAlt } from 'react-icons/fa'
 import logo from '../assets/logo.png'
 import smallLogo from '../assets/logo-small.png'
 import { signOut } from 'firebase/auth'
 import { auth } from '../utils/firebase'
 import { Search } from './Search'
 import { useEffect, useState } from 'react'
+import { LogOutIcon } from './icons/LogOutIcon'
 
 export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -64,7 +64,7 @@ export const Navbar = () => {
             className='md:text-lg'
             onClick={() => signOut(auth)}
           >
-            <FaSignOutAlt />
+            <LogOutIcon />
           </button>
         </div>
       </nav>

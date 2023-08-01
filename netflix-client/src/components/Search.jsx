@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { FaSearch } from 'react-icons/fa'
+import { SearchIcon } from './icons/SearchIcon'
 
 export const Search = () => {
   const [showSearch, setShowSearch] = useState(false)
@@ -16,7 +16,7 @@ export const Search = () => {
           if (!inputHover) setShowSearch(false)
         }}
       >
-        <FaSearch />
+        <SearchIcon />
       </button>
       <input
         type='text'

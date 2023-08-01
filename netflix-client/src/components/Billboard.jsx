@@ -1,8 +1,9 @@
-import { AiOutlineInfoCircle } from 'react-icons/ai'
-import { FaPlay } from 'react-icons/fa'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { currentPlaying } from '../store'
+import { MoreInfoIcon } from './icons/MoreInfoIcon'
+import { VideoPlayIcon } from './icons/VideoPlayIcon'
+// import InfoIcon from '../assets/InfoIcon.svg'
 
 export const Billboard = ({ movie }) => {
   const navigate = useNavigate()
@@ -37,7 +38,7 @@ export const Billboard = ({ movie }) => {
               dispatch(currentPlaying({ type, id }))
             }}
           >
-            <FaPlay /> Play
+            <VideoPlayIcon /> Play
           </button>
           <button
             className='teaser-buttons'
@@ -45,7 +46,7 @@ export const Billboard = ({ movie }) => {
               navigate('/details')
             }}
           >
-            <AiOutlineInfoCircle /> More info
+            <MoreInfoIcon /> More info
           </button>
         </div>
       </div>

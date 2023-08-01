@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { Card } from './Card'
-import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai'
+import { AngleLeftIcon } from './icons/AngleLeftIcon'
+import { AngleRightIcon } from './icons/AngleRightIcon'
 
 export const CardSlider = ({ data, title }) => {
   const [showControls, setShowControls] = useState(false)
@@ -42,11 +43,13 @@ export const CardSlider = ({ data, title }) => {
         onMouseEnter={() => setShowControls(true)}
         onMouseLeave={() => setShowControls(false)}
       >
-        <div className={`slider-action -left-12 ${!showControls ? 'hidden' : ''}
+        <button
+          className={`slider-action bg-black/40 -left-14 ${!showControls ? 'hidden' : ''}
         flex justify-center items-center max-md:hidden cursor-pointer`}
+          onClick={() => handleDirection('left')}
         >
-          <AiOutlineLeft onClick={() => handleDirection('left')} />
-        </div>
+          <AngleLeftIcon />
+        </button>
         <div
           className='max-md:overflow-x-scroll scroll whitespace-nowrap scrollbar-hide translate-x-0'
           ref={listRef}
@@ -57,11 +60,13 @@ export const CardSlider = ({ data, title }) => {
           ))
         }
         </div>
-        <div className={`slider-action right-0 ${!showControls ? 'hidden' : ''}
+        <button
+          className={`slider-action bg-black/40 right-0 ${!showControls ? 'hidden' : ''}
         flex justify-center items-center max-md:hidden cursor-pointer`}
+          onClick={() => handleDirection('right')}
         >
-          <AiOutlineRight onClick={() => handleDirection('right')} />
-        </div>
+          <AngleRightIcon />
+        </button>
       </div>
     </>
   )
