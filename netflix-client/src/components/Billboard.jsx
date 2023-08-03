@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom'
 import { currentPlaying } from '../store'
 import { MoreInfoIcon } from './icons/MoreInfoIcon'
 import { VideoPlayIcon } from './icons/VideoPlayIcon'
-// import InfoIcon from '../assets/InfoIcon.svg'
 
 export const Billboard = ({ movie }) => {
   const navigate = useNavigate()
@@ -32,7 +31,7 @@ export const Billboard = ({ movie }) => {
         {/* Buttons */}
         <div className='flex justify-center md:justify-start my-20 md:mx-20 md:my-10 gap-8'>
           <button
-            className='teaser-buttons'
+            className='billboard-buttons'
             onClick={() => {
               navigate('/player')
               dispatch(currentPlaying({ type, id }))
@@ -41,7 +40,7 @@ export const Billboard = ({ movie }) => {
             <VideoPlayIcon /> Play
           </button>
           <button
-            className='teaser-buttons'
+            className='billboard-buttons'
             onClick={() => {
               navigate('/details')
             }}

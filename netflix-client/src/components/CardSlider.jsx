@@ -35,23 +35,24 @@ export const CardSlider = ({ data, title }) => {
 
   return (
     <>
-      <div className=' mx-6 md:mx-14 text-md mt-4 md:mt-14 md:text-xl lg:text-2xl font-semibold mb-4'>
+      <div className='mx-6 md:mx-14 text-md mt-4 md:mt-14 md:text-xl lg:text-2xl font-semibold mb-4 -z-50'>
         <h1>{title}</h1>
       </div>
       <div
-        className='relative flex items-center ml-6 md:ml-14'
+        className='flex justify-center group/slider-container'
         onMouseEnter={() => setShowControls(true)}
         onMouseLeave={() => setShowControls(false)}
       >
         <button
-          className={`slider-action bg-black/40 -left-14 ${!showControls ? 'hidden' : ''}
-        flex justify-center items-center max-md:hidden cursor-pointer`}
-          onClick={() => handleDirection('left')}
+        //   className={`slider-action bg-black/40 -left-14 ${!showControls ? 'hidden' : ''}
+        // flex justify-center items-center max-md:hidden cursor-pointer`}
+          className='invisible bg-black/40 focus:bg-black/60 hover:bg-black/60 transition-colors ease-in-out flex-grow-0 z-10 rounded-e-xl group px-1 group-hover/slider-container:visible'
+          // onClick={() => handleDirection('left')}
         >
           <AngleLeftIcon />
         </button>
         <div
-          className='max-md:overflow-x-scroll scroll whitespace-nowrap scrollbar-hide translate-x-0'
+          className='flex flex-grow translate-x-[-0%]'
           ref={listRef}
         >
           {
@@ -61,9 +62,10 @@ export const CardSlider = ({ data, title }) => {
         }
         </div>
         <button
-          className={`slider-action bg-black/40 right-0 ${!showControls ? 'hidden' : ''}
-        flex justify-center items-center max-md:hidden cursor-pointer`}
-          onClick={() => handleDirection('right')}
+        //   className={`slider-action bg-black/40 right-0 ${!showControls ? 'hidden' : ''}
+        // flex justify-center items-center max-md:hidden cursor-pointer`}
+          className='invisible bg-black/40 focus:bg-black/60 hover:bg-black/60 transition-colors ease-in-out flex-grow-0 z-10 rounded-s-xl group px-2 group-hover/slider-container:visible'
+          // onClick={() => handleDirection('right')}
         >
           <AngleRightIcon />
         </button>

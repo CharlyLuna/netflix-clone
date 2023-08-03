@@ -29,14 +29,8 @@ body::-webkit-scrollbar {
   display: none;
 }
 
-/* Form buttons component */
 @layer components {
-  .form-button {
-    @apply py-2 px-4 bg-[#e50914] border-none cursor-pointer font-bold text-xs md:text-sm;
-  }
-}
-/* Search component */
-@layer components {
+  /* Search component */
   .show-search {
     @apply border border-white border-solid bg-[rgba(0,0,0,0.6)];
   }
@@ -47,29 +41,25 @@ body::-webkit-scrollbar {
     @apply w-0 opacity-0 invisible bg-transparent transition duration-300
     ease-in-out border-none focus:outline-none;
   }
-}
-
-/* Home teaser buttons component */
-@layer components {
-  .teaser-buttons {
+  /* Form buttons component */
+  .form-button {
+    @apply py-2 px-4 bg-[#e50914] border-none cursor-pointer font-bold text-xs md:text-sm;
+  }
+  /* Home billboard buttons component */
+  .billboard-buttons {
     @apply flex justify-center items-center text-lg md:text-2xl gap-4 rounded-md
   bg-white py-2 px-6 transition duration-300 first-of-type:text-black
     ease-in-out hover:opacity-80 last-of-type:bg-[rgba(109,109,110,0.7)]
   }
-}
-
-/* Card buttons */
-@layer components {
+  /* Card buttons */
   .card-buttons {
-    @apply text-lg lg:text-2xl transition duration-300 ease-in-out hover:text-[#b8b8b8]
+    @apply cursor-pointer w-7 h-7 lg:w-10 lg:h-10 border-2 border-gray-400
+    rounded-full flex justify-center items-center hover:border-white transition-all duration-300 
+    hover:bg-white/5
   }
-}
-
-/* Slider actions */
-@layer components {
+  /* Slider actions */
   .slider-action {
     @apply absolute z-50 h-full top-0 bottom-0 w-12 transition duration-300 ease-in-out
-    text-4xl
   }
 }
 
