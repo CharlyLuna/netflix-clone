@@ -29,6 +29,20 @@ body::-webkit-scrollbar {
   display: none;
 }
 
+.slider {
+  --items: 2;
+  --slider-index: 0;
+  display: flex;
+  flex-grow: 1;
+  transform: translateX(calc(var(--slider-index) * -100%));
+  transition: transform 300ms ease-in-out
+}
+
+.card {
+  flex: 0 0 calc(100% / var(--items));
+  max-width: calc(100% / var(--items));
+}
+
 @layer components {
   /* Search component */
   .show-search {
@@ -74,4 +88,23 @@ body::-webkit-scrollbar {
 .scrollbar-hide {
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
+}
+
+/* Slider items shown on screen change */
+@media (min-width:640px) {
+  .slider {
+    --items: 3
+  }
+}
+
+@media (min-width:768px) {
+  .slider {
+    --items: 4
+  }
+}
+
+@media (min-width:1280px) {
+  .slider {
+    --items: 6
+  }
 }
