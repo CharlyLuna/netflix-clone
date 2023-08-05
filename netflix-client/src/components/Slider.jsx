@@ -13,8 +13,8 @@ export const Slider = ({ movies, titles }) => {
           ? (
             <div className='bg-zinc-900 pb-16'>
               <CardSlider title={titles[0]} data={getMoviesFromRange(0, 12)} />
-              <CardSlider title={titles[1]} data={getMoviesFromRange(12, 22)} />
-              <CardSlider title={titles[2]} data={getMoviesFromRange(22, 34)} />
+              <CardSlider title={titles[1]} data={getMoviesFromRange(12, 24)} />
+              <CardSlider title={titles[2]} data={getMoviesFromRange(24, 36)} />
             </div>
             )
           : <NotAvailable />
