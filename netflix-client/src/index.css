@@ -55,7 +55,7 @@ body::-webkit-scrollbar {
 
 	100% {
     visibility: visible;
-		transform: translateY(-50%) scale(1.1);
+		transform: translateY(-50%) translateX(3%) scale(1.1);
 	}
 }
 
@@ -77,9 +77,9 @@ body::-webkit-scrollbar {
   }
   /* Home billboard buttons component */
   .billboard-buttons {
-    @apply flex justify-center items-center text-lg md:text-2xl gap-4 rounded-md
-  bg-white py-2 px-6 transition duration-300 first-of-type:text-black
-    ease-in-out hover:opacity-80 last-of-type:bg-[rgba(109,109,110,0.7)]
+    @apply flex justify-center items-center text-lg font-semibold md:text-2xl gap-4 rounded-md
+  bg-white py-2 px-6 transition duration-300 first-of-type:text-black ease-in-out 
+  hover:first-of-type:bg-gray-300 hover:last-of-type:bg-[rgba(88,88,88,0.75)] last-of-type:bg-[rgba(109,109,110,0.75)]
   }
   /* Card buttons */
   .card-buttons {

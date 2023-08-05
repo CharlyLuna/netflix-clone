@@ -25,10 +25,6 @@ export const HoveredCard = ({ name, genres, image }) => {
         className='cursor-pointer  transition duration object-cover
           shadow-xl rounded-t w-full h-[12vw] xl:h-[8vw]'
       />
-      {/* <img
-          src={`https://image.tmdb.org/t/p/w500${image}`} className='relative cursor-pointer w-full transition duration object-cover
-          shadow-xl rounded-t h-[12vw]' alt=''
-        /> */}
       {/* Info of movie */}
       <div className='z-10 bg-zinc-800 p-3 lg:p-4 absolute w-full h-fit
         transition shadow rounded-b '
@@ -70,10 +66,10 @@ export const HoveredCard = ({ name, genres, image }) => {
         {/* Genres */}
         <ul className='flex flex-wrap gap-2 mt-2 mb-2'>
           {
-                genres.map(genre => (
-                  <li className='text-xs 2xl:text-sm' key={genre}>{genre}</li>
-                ))
-              }
+            genres.map(genre => (
+              <li className='text-xs 2xl:text-sm' key={genre}>{genre}</li>
+            ))
+          }
         </ul>
       </div>
     </div>
