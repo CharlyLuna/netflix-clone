@@ -1,22 +1,16 @@
-import { Link, useNavigate } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import logo from '../assets/logo.png'
 import smallLogo from '../assets/logo-small.png'
-import { signOut } from 'firebase/auth'
-import { auth } from '../utils/firebase'
 import { Search } from './Search'
-import { useEffect, useState } from 'react'
-import { LogOutIcon } from './icons/LogOutIcon'
+import { NAVBAR_LINKS } from '../utils/constants'
+import { DropDownMenu } from './DropDownMenu'
+import { useDebounce } from '../hooks/useDebounce'
 
 export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false)
-  const navigate = useNavigate()
-
-  const links = [
-    { name: 'Home', link: '/' },
-    { name: 'TV Shows', link: '/tv' },
-    { name: 'Movies', link: '/movies' },
-    { name: 'My List', link: '/mylist' }
-  ]
+  const [dropDownIsHovered, setDropDownIsHovered] = useState(false)
+  const debouncedHoverValue = useDebounce(dropDownIsHovered, 300)
 
   useEffect(() => {
     const handleScroll = (e) => {
@@ -33,41 +27,47 @@ export const Navbar = () => {
   }, [])
 
   return (
-    <div>
-      <nav className={`flex fixed top-0 h-24 w-screen justify-between
+    <header className={`flex fixed top-0 h-[70px] w-screen justify-between
       z-10 px-6 lg:px-16 items-center transition ease-in-out duration-300
-      ${isScrolled ? 'bg-black/95' : ''}`}
-      >
-        {/* LEFT SIDE OF NAVBAR */}
-        <div className='flex items-center gap-2 md:gap-8'>
-          <div className='flex items-center justify-center'>
-            <picture onClick={() => navigate('/')}>
-              <source media='(max-width: 767px)' srcSet={smallLogo} />
-              <source media='(min-width: 768px)' srcSet={logo} />
-              <img className='h-16' src={logo} alt='Netflix logo' />
-            </picture>
-          </div>
-          <ul className='flex list-none gap-4 sm:gap-8'>
-            {
-              links.map(({ name, link }) => (
-                <Link className='text-xs sm:text-base lg:text-xl first:max-md:hidden' key={name} to={link}>{name}</Link>
-              ))
-            }
-          </ul>
-        </div>
-        {/* RIGHT SIDE OF NAVBAR */}
-        <div className='flex items-center gap-4 justify-end md:w-[28%] lg:w-auto'>
-          {/* Search */}
-          <Search />
-          {/* Log out button */}
-          <button
-            className='md:text-lg'
-            onClick={() => signOut(auth)}
-          >
-            <LogOutIcon />
-          </button>
-        </div>
+      ${isScrolled ? 'bg-zinc-900' : ''}`}
+    >
+      {/* LEFT SIDE OF NAVBAR */}
+      <nav className='flex items-center gap-2 md:gap-8'>
+        <a href='/'>
+          <picture>
+            <source media='(max-width: 767px)' srcSet={smallLogo} />
+            <source media='(min-width: 768px)' srcSet={logo} />
+            <img className='h-14 aspect-[1/1] md:aspect-[2.38/1]' src={logo} alt='Netflix logo' />
+          </picture>
+        </a>
+        <ul className='flex list-none gap-4 sm:gap-8'>
+          {
+            NAVBAR_LINKS.map(({ name, link }) => (
+              <li className='text-xs sm:text-base lg:text-xl first:max-md:hidden hover:text-gray-300 transition-colors duration-300' key={name}>
+                <Link to={link}>{name}</Link>
+              </li>
+            ))
+          }
+        </ul>
       </nav>
-    </div>
+      {/* RIGHT SIDE OF NAVBAR */}
+      <nav className='flex items-center gap-4 justify-end md:w-[28%] lg:w-auto'>
+        {/* Search */}
+        <Search />
+        {/* Log out button */}
+        <a
+          href='#account'
+          className='flex items-center gap-2'
+          onMouseEnter={() => setDropDownIsHovered(true)}
+          onMouseLeave={() => setDropDownIsHovered(false)}
+        >
+          <img className='h-7 w-7 rounded-md' src='/default-profile-pic.png' alt='profile picture' />
+          <div className='arrow-down' />
+        </a>
+      </nav>
+      {
+        debouncedHoverValue && <DropDownMenu isVisible={debouncedHoverValue} setVisibility={setDropDownIsHovered} />
+      }
+    </header>
   )
 }

@@ -47,6 +47,10 @@ body::-webkit-scrollbar {
   animation: zoomInAnimation .5s ease-in-out .2s 1 normal forwards;
 }
 
+.fadeIn {
+  animation: fadeInAnimation .3s ease 0s 1 normal forwards;
+}
+
 @keyframes zoomInAnimation {
 	0% {
     visibility: visible;
@@ -59,16 +63,44 @@ body::-webkit-scrollbar {
 	}
 }
 
+@keyframes fadeInAnimation {
+	0% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
+
+.arrow-up {
+  width: 0; 
+  height: 0; 
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  
+  border-bottom: 7px solid white;
+}
+
+.arrow-down {
+  width: 0; 
+  height: 0; 
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  
+  border-top: 6px solid white;
+}
+
 @layer components {
   /* Search component */
   .show-search {
-    @apply border border-white border-solid bg-[rgba(0,0,0,0.6)];
+    @apply border border-white border-solid bg-[rgba(0,0,0,0.6)] transition-all duration-300;
   }
   .show-search-bar {
     @apply visible opacity-100 w-full !important
   }
   .search-bar {
-    @apply w-0 opacity-0 invisible bg-transparent transition duration-300
+    @apply w-0 opacity-0 invisible bg-transparent transition-all duration-300
     ease-in-out border-none focus:outline-none;
   }
   /* Form buttons component */
