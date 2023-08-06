@@ -8,7 +8,7 @@ export const CardSlider = ({ data, title }) => {
 
   return (
     <>
-      <div className=' px-9 lg:px-12 mt-6 md:mt-14 md:text-lg lg:text-2xl font-semibold mb-2 '>
+      <div className='px-9 lg:px-12 mt-6 md:mt-14 lg:text-xl font-semibold mb-2 '>
         <h1>{title}</h1>
       </div>
       <div

@@ -15,7 +15,7 @@ export const Billboard = ({ movie }) => {
       />
       <div className='absolute w-full bottom-0 bg-gradient-to-t from-zinc-900 to-transparent h-[100px]' />
       {/* Serie info container */}
-      <div className='md:m-auto w-full absolute bottom-20'>
+      <div className='md:m-auto w-full absolute bottom-20 lg:bottom-36'>
         {/* Serie name */}
         <div className='max-md:mx-10 md:ms-20 text-center md:text-start'>
           <h1 className='text-4xl lg:text-5xl font-extrabold md:w-[70%]'>{name}</h1>

@@ -11,7 +11,7 @@ export const Slider = ({ movies, titles }) => {
       {
         movies.length > 0
           ? (
-            <div className='bg-zinc-900 pb-16'>
+            <div className='bg-zinc-900 pb-12 md:pb-28'>
               <CardSlider title={titles[0]} data={getMoviesFromRange(0, 12)} />
               <CardSlider title={titles[1]} data={getMoviesFromRange(12, 24)} />
               <CardSlider title={titles[2]} data={getMoviesFromRange(24, 36)} />

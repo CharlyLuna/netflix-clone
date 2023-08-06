@@ -15,7 +15,7 @@ export const Card = ({ movie, isLiked = false }) => {
         data-testid='img-card'
         src={`https://image.tmdb.org/t/p/w300${image}`}
         alt={`${name} poster`}
-        className='cursor-pointer object-cover transition duration-300
+        className='cursor-pointer object-cover transition duration-500
         shadow-xl rounded group-hover:opacity-90 md:group-hover:opacity-0
         w-full h-full'
       />
