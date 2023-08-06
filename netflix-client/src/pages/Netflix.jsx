@@ -5,7 +5,7 @@ import { fetchMovies, getGenres } from '../store'
 import { Slider } from '../components/Slider'
 import { Billboard } from '../components/Billboard'
 import { getRandomMovie } from '../utils/functions'
-import { DEFAULT_MOVIE, HOMEPAGE_TITLES } from '../utils/constants'
+import { HOMEPAGE_TITLES } from '../utils/constants'
 
 export const Netflix = () => {
   const genresLoaded = useSelector(state => state.netflix.genresLoaded)
@@ -30,7 +30,7 @@ export const Netflix = () => {
           <Billboard movie={randomMovie} />
           )
         : (
-          <Billboard movie={DEFAULT_MOVIE} />
+          <div className='w-full h-[90vh] min-h-[600px] lg:min-h-[700px]' />
           )}
       <Slider movies={movies ?? []} titles={HOMEPAGE_TITLES} />
     </div>
