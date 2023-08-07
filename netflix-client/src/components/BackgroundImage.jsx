@@ -1,4 +1,4 @@
-import background from '../assets/login.jpg'
+import background from '../assets/login.webp'
 
 export const BackgroundImage = () => {
   return (

@@ -13,6 +13,11 @@ export const Movies = () => {
   const genres = useSelector(state => state.netflix.genres)
   const dispatch = useDispatch()
 
+  // Scroll to top of the page when component is mounted
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
+  }, [])
+
   useEffect(() => {
     if (!genresLoaded) {
       dispatch(getGenres())

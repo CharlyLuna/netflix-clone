@@ -1,9 +1,10 @@
 export const DEFAULT_MOVIE = {
-  genres: ['Action', 'Thriller', 'Crime'],
-  id: 603692,
-  image: '/h8gHn0OzBoaefsYseUByqsmEDMY.jpg',
-  name: 'John Wick: Chapter 4',
-  overview: 'With the price on his head ever increasing, John Wick uncovers a path to defeating The High Table. But before he can earn'
+  image: {
+    original: '/main-movie-poster.webp',
+    small: '/main-movie-poster-780.webp'
+  },
+  name: 'The Witcher',
+  overview: 'Geralt of Rivia, a mutated monster-hunter for hire, journeys toward his destiny in a turbulent world where people often prove more wicked than beasts.'
 }
 export const HOMEPAGE_TITLES = ['Trending Now', 'Recently Added', 'Popular On Netflix']
 export const MOVIEPAGE_TITLES = ['Trending Now', 'New Releases', 'Blockbuster Movies', 'Popular On Netflix', 'Top Picks For You', 'Critically Acclaimed']

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import logo from '../assets/logo.png'
-import smallLogo from '../assets/logo-small.png'
+import logo from '../assets/logo.webp'
+import smallLogo from '../assets/logo-small.webp'
 import { Search } from './Search'
 import { NAVBAR_LINKS } from '../utils/constants'
 import { DropDownMenu } from './DropDownMenu'
@@ -61,7 +61,7 @@ export const Navbar = () => {
           onMouseEnter={() => setDropDownIsHovered(true)}
           onMouseLeave={() => setDropDownIsHovered(false)}
         >
-          <img className='h-7 w-7 rounded-md' src='/default-profile-pic.png' alt='profile picture' />
+          <img className='h-7 w-7 rounded-md' src='/default-profile-pic.webp' alt='profile picture' />
           <div className='arrow-down' />
         </a>
       </nav>

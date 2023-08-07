@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom'
-import logo from '../assets/logo.png'
+import logo from '../assets/logo.webp'
 
 export const Header = ({ login }) => {
   const navigate = useNavigate()

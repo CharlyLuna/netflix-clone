@@ -8,14 +8,18 @@ export const Billboard = ({ movie }) => {
 
   return (
     <div className='relative'>
-      <img
-        src={`https://image.tmdb.org/t/p/original${image}`}
-        alt={`${name} poster`}
-        className='brightness-75 w-full h-[70vh] md:h-[90vh] min-h-[600px] lg:min-h-[700px] object-cover'
-      />
+      <picture>
+        <source media='(max-width: 767px)' srcSet={image.small} />
+        <source media='(min-width: 768px)' srcSet={image.original} />
+        <img
+          src={image.original}
+          alt={`${name} poster`}
+          className='brightness-75 w-full h-[75vh] md:h-[90vh] min-h-[600px] lg:min-h-[700px] object-cover'
+        />
+      </picture>
       <div className='absolute w-full bottom-0 bg-gradient-to-t from-zinc-900 to-transparent h-[100px]' />
       {/* Serie info container */}
-      <div className='md:m-auto w-full absolute bottom-20 lg:bottom-36'>
+      <div className='md:m-auto w-full absolute bottom-32'>
         {/* Serie name */}
         <div className='max-md:mx-10 md:ms-20 text-center md:text-start'>
           <h1 className='text-4xl lg:text-5xl font-extrabold md:w-[70%]'>{name}</h1>

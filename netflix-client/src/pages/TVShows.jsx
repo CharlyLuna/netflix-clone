@@ -13,6 +13,11 @@ export const TVShows = () => {
   const genres = useSelector(state => state.netflix.tvGenres)
   const dispatch = useDispatch()
 
+  // Scroll to top of the page when component is mounted
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
+  }, [])
+
   useEffect(() => {
     if (!genresLoaded) {
       dispatch(getTVGenres())
