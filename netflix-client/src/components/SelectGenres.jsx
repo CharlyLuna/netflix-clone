@@ -1,18 +1,10 @@
-import { useDispatch } from 'react-redux'
-import { fetchDataByGenre } from '../store'
 
-export const SelectGenres = ({ genres, type }) => {
-  const dispatch = useDispatch()
-
-  const handleGenreSelection = (e) => {
-    dispatch(fetchDataByGenre({ genre: e.target.value, type }))
-  }
-
+export const SelectGenres = ({ genres, onGenreChange }) => {
   return (
     <select
       className='flex text-white ml-6 md:ml-14 cursor-pointer
       bg-zinc-800 rounded px-2 py-1'
-      onChange={handleGenreSelection}
+      onChange={(e) => onGenreChange(e.target.value)}
     >
       {
         genres.map(genre => (

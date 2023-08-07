@@ -14,18 +14,22 @@ export const Movies = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    if (!genresLoaded) dispatch(getGenres())
-  }, [])
-
-  useEffect(() => {
-    if (genresLoaded) dispatch(fetchDataByGenre({ genre: genres[0].name, type: 'movie' }))
+    if (!genresLoaded) {
+      dispatch(getGenres())
+    } else {
+      if (movies.length === 0) dispatch(fetchDataByGenre({ genre: genres[0].name, type: 'movie' }))
+    }
   }, [genresLoaded])
+
+  const handleGenreChange = (genre) => {
+    dispatch(fetchDataByGenre({ genre, type: 'movie' }))
+  }
 
   return (
     <div className='bg-zinc-900'>
       <Navbar />
       <div className='mt-28'>
-        <SelectGenres genres={genres} type='movie' />
+        <SelectGenres genres={genres} onGenreChange={handleGenreChange} />
         {
           movies.length > 0
             ? <Slider movies={movies} titles={MOVIEPAGE_TITLES} />

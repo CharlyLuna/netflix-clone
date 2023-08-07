@@ -4,15 +4,16 @@ import {
   createSlice
 } from '@reduxjs/toolkit'
 import axios from 'axios'
+import { getRawData } from '../utils/functions'
 
 const initialState = {
+  trending: [],
   movies: [],
+  tvShows: [],
   genresLoaded: false,
   genres: [],
-  tvShows: [],
   tvGenresLoaded: false,
-  tvGenres: [],
-  currentPlaying: {}
+  tvGenres: []
 }
 
 const BASE_URL = import.meta.env.VITE_TMDB_URL
@@ -28,38 +29,7 @@ export const getTVGenres = createAsyncThunk('netflix/tv_genres', async () => {
   return genres
 })
 
-const getRawData = async (api, genres, paging) => {
-  const moviesArray = []
-  for (let i = 1; moviesArray.length < 60 && i < 10; i++) {
-    const { data: { results } } = await axios(
-      `${api}${paging ? `&page=${i}` : ''}`
-    )
-    createArrayFromRawData(results, moviesArray, genres)
-  }
-  return moviesArray
-}
-
-const createArrayFromRawData = (results, moviesArray, genres) => {
-  results.forEach(movie => {
-    const movieGenres = []
-    movie.genre_ids.forEach(genre => {
-      const name = genres.find(({ id }) => id === genre)
-      if (name) movieGenres.push(name.name)
-    })
-    if (movie.backdrop_path) {
-      moviesArray.push({
-        id: movie.id,
-        name: movie?.original_name ? movie.original_name : movie.original_title,
-        image: movie.backdrop_path,
-        genres: movieGenres.slice(0, 3),
-        overview: movie.overview,
-        type: movie.media_type
-      })
-    }
-  })
-}
-
-export const fetchMovies = createAsyncThunk(
+export const fetchTrending = createAsyncThunk(
   'netflix/trending',
   async ({ type }, thunkApi) => {
     const { netflix: { genres } } = thunkApi.getState()
@@ -88,7 +58,7 @@ export const fetchTVDataByGenre = createAsyncThunk(
   async ({ genre, type }, thunkApi) => {
     const { netflix: { tvGenres } } = thunkApi.getState()
     const data = await getRawData(
-      `${BASE_URL}/discover/${type}?api_key=${KEY}&with_genres=${genre}`,
+      `${BASE_URL}/discover/${type}?api_key=${KEY}&with_genres=${genre}&with_origin_country=US`,
       tvGenres,
       true
     )
@@ -98,18 +68,13 @@ export const fetchTVDataByGenre = createAsyncThunk(
 const NetflixSlice = createSlice({
   name: 'Netflix',
   initialState,
-  reducers: {
-    currentPlaying: (state, action) => {
-      state.currentPlaying = action.payload
-    }
-  },
   extraReducers: (builder) => {
     builder.addCase(getGenres.fulfilled, (state, action) => {
       state.genres = action.payload
       state.genresLoaded = true
     })
-    builder.addCase(fetchMovies.fulfilled, (state, action) => {
-      state.movies = action.payload
+    builder.addCase(fetchTrending.fulfilled, (state, action) => {
+      state.trending = action.payload
     })
     builder.addCase(fetchDataByGenre.fulfilled, (state, action) => {
       state.movies = action.payload
@@ -123,8 +88,6 @@ const NetflixSlice = createSlice({
     })
   }
 })
-
-export const { currentPlaying } = NetflixSlice.actions
 
 export const store = configureStore({
   reducer: {

@@ -5,7 +5,7 @@ import { Navbar } from '../components/Navbar'
 import { Slider } from '../components/Slider'
 import { NotAvailable } from '../components/NotAvailable'
 import { TVPAGE_TITLES } from '../utils/constants'
-import { SelectTVGenres } from '../components/SelectTVGenres'
+import { SelectGenres } from '../components/SelectGenres'
 
 export const TVShows = () => {
   const genresLoaded = useSelector(state => state.netflix.tvGenresLoaded)
@@ -14,18 +14,22 @@ export const TVShows = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    if (!genresLoaded) dispatch(getTVGenres())
-  }, [])
-
-  useEffect(() => {
-    if (genresLoaded) dispatch(fetchTVDataByGenre({ genre: genres[0].name, type: 'tv' }))
+    if (!genresLoaded) {
+      dispatch(getTVGenres())
+    } else {
+      if (tvShows.length === 0) dispatch(fetchTVDataByGenre({ genre: genres[0].name, type: 'tv' }))
+    }
   }, [genresLoaded])
+
+  const handleGenreChange = (genre) => {
+    dispatch(fetchTVDataByGenre({ genre, type: 'tv' }))
+  }
 
   return (
     <div className='bg-zinc-900'>
       <Navbar />
       <div className='mt-28'>
-        <SelectTVGenres genres={genres} type='tv' />
+        <SelectGenres genres={genres} onGenreChange={handleGenreChange} />
         {
           tvShows.length > 0
             ? <Slider movies={tvShows} titles={TVPAGE_TITLES} />
