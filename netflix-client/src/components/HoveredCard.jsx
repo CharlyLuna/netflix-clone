@@ -11,7 +11,7 @@ export const HoveredCard = ({ name, genres, image }) => {
 
   return (
     <div className='invisible absolute top-0 z-10 max-md:hidden
-    zoomIn md:w-[27vw] xl:w-[18vw] h-full max-w-[320px] translate-y-1/2'
+    zoomIn h-full hovered-card'
     >
       <video
         src='/netflix-intro.mp4'
@@ -62,12 +62,12 @@ export const HoveredCard = ({ name, genres, image }) => {
           </div>
         </div>
         {/* Movie title */}
-        <h1 className='w-full text-sm lg:text-base truncate pr-4 mt-4'>{name}</h1>
+        <h1 className='w-full text-sm lg:text-base truncate pr-4 mt-3'>{name}</h1>
         {/* Genres */}
-        <ul className='flex flex-wrap gap-2 mt-2 mb-2'>
+        <ul className='flex flex-wrap mt-2 gap-1'>
           {
             genres.map(genre => (
-              <li className='text-xs 2xl:text-sm' key={genre}>{genre}</li>
+              <li className='text-xs 2xl:text-sm pr-1' key={genre}>{genre}</li>
             ))
           }
         </ul>

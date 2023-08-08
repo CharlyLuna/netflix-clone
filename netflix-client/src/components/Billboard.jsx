@@ -7,7 +7,7 @@ export const Billboard = ({ movie }) => {
   const { name, image, overview } = movie
 
   return (
-    <div className='relative'>
+    <main className='relative'>
       <picture>
         <source media='(max-width: 767px)' srcSet={image.small} />
         <source media='(min-width: 768px)' srcSet={image.original} />
@@ -43,6 +43,6 @@ export const Billboard = ({ movie }) => {
           </button>
         </div>
       </div>
-    </div>
+    </main>
   )
 }

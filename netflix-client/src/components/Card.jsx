@@ -1,15 +1,28 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { HoveredCard } from './HoveredCard'
 
 export const Card = ({ movie, isLiked = false }) => {
   const { image, name, genres } = movie
   const [isHovered, setIsHovered] = useState(false)
+  const cardRef = useRef()
+
+  const handleHover = () => {
+    // Change animation of card when is near to the end of the screen
+    const offset = cardRef.current.getBoundingClientRect().right - window.innerWidth
+    if (cardRef.current.getBoundingClientRect().right > window.innerWidth - 100) {
+      cardRef.current.style.setProperty('--offset', offset + 'px')
+    } else {
+      cardRef.current.style.setProperty('--offset', '0%')
+    }
+    setIsHovered(true)
+  }
 
   return (
     <div
       className='card group bg-zinc-900 relative aspect-[16/9] p-1'
-      onMouseEnter={() => setIsHovered(true)}
+      onMouseEnter={() => handleHover()}
       onMouseLeave={() => setIsHovered(false)}
+      ref={cardRef}
     >
       <img
         data-testid='img-card'

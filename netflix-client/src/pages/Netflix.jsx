@@ -28,10 +28,10 @@ export const Netflix = () => {
   }, [genresLoaded])
 
   return (
-    <div className='bg-zinc-900'>
+    <>
       <Navbar />
       <Billboard movie={DEFAULT_MOVIE} />
       <Slider movies={trendingMedia ?? []} titles={HOMEPAGE_TITLES} />
-    </div>
+    </>
   )
 }

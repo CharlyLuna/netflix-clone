@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 :root {
+  --offset: 20%;
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   margin: 0;
   padding: 0;
@@ -43,6 +44,10 @@ body::-webkit-scrollbar {
   max-width: calc(100% / var(--items));
 }
 
+.hovered-card {
+  width: calc((100vw / var(--items)) + 20px);
+}
+
 .zoomIn {
   animation: zoomInAnimation .5s ease-in-out .2s 1 normal forwards;
 }
@@ -59,7 +64,7 @@ body::-webkit-scrollbar {
 
 	100% {
     visibility: visible;
-		transform: translateY(-50%) translateX(3%) scale(1.1);
+		transform: translateY(-55%) translateX(var(--offset)) scale(1);
 	}
 }
 

@@ -31,7 +31,7 @@ export const CardSlider = ({ data, title }) => {
         }
         </div>
         <button
-          className='md:invisible bg-black/40 focus:bg-black/60 hover:bg-black/60 transition-colors ease-in-out flex-grow-0 w-9 lg:w-12 shrink-0 z-10 rounded-s-xl group px-2 group-hover/slider-container:visible my-1'
+          className='md:invisible bg-black/40 focus:bg-black/60 hover:bg-black/60 transition-colors ease-in-out flex-grow-0 w-9 md:w-12 shrink-0 z-10 rounded-s-xl group px-2 group-hover/slider-container:visible my-1'
           onClick={() => handleSlide('right')}
         >
           <AngleRightIcon />
