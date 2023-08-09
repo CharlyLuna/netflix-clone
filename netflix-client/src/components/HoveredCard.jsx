@@ -1,13 +1,8 @@
 import { useNavigate } from 'react-router-dom'
-import { VideoPlayIcon } from './icons/VideoPlayIcon'
-import { LikeIcon } from './icons/LikeIcon'
-import { DownIcon } from './icons/DownIcon'
-import { PlusIcon } from './icons/PlusIcon'
-import { useState } from 'react'
+import { LikeIconSolid, LikeIconOutline, DownIcon, PlusIcon, VideoPlayIcon, CheckIcon } from './icons/'
 
-export const HoveredCard = ({ name, genres, image }) => {
+export const HoveredCard = ({ name, genres, image, isLiked, changeLike, isOnFavorites, changeListStatus }) => {
   const navigate = useNavigate()
-  const [isLiked, setIsLiked] = useState(false)
 
   return (
     <div className='invisible absolute top-0 z-10 max-md:hidden
@@ -40,20 +35,31 @@ export const HoveredCard = ({ name, genres, image }) => {
             >
               <VideoPlayIcon height={5} width={5} />
             </a>
-            <div className='card-buttons'>
-              <LikeIcon />
-            </div>
             {
               isLiked
                 ? (
-                  <div className='card-buttons'>
-                    <LikeIcon />
-                  </div>
+                  <button className='card-buttons' onClick={() => changeLike(false)}>
+                    <LikeIconSolid />
+                  </button>
                   )
                 : (
-                  <div className='card-buttons'>
+                  <button className='card-buttons' onClick={() => changeLike(true)}>
+                    <LikeIconOutline />
+                  </button>
+                  )
+            }
+
+            {
+              isOnFavorites
+                ? (
+                  <button className='card-buttons' onClick={() => changeListStatus()}>
+                    <CheckIcon />
+                  </button>
+                  )
+                : (
+                  <button className='card-buttons' onClick={() => changeListStatus()}>
                     <PlusIcon />
-                  </div>
+                  </button>
                   )
               }
           </div>

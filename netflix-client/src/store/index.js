@@ -10,6 +10,7 @@ const initialState = {
   trending: [],
   movies: [],
   tvShows: [],
+  myList: [],
   genresLoaded: false,
   genres: [],
   tvGenresLoaded: false,
@@ -68,6 +69,15 @@ export const fetchTVDataByGenre = createAsyncThunk(
 const NetflixSlice = createSlice({
   name: 'Netflix',
   initialState,
+  reducers: {
+    addToFavorites: (state, action) => {
+      state.myList = [...state.myList, action.payload]
+    },
+    removeFromFavorites: (state, action) => {
+      const { name } = action.payload
+      state.myList = state.myList.filter(movie => movie.name !== name)
+    }
+  },
   extraReducers: (builder) => {
     builder.addCase(getGenres.fulfilled, (state, action) => {
       state.genres = action.payload
@@ -88,6 +98,8 @@ const NetflixSlice = createSlice({
     })
   }
 })
+
+export const { addToFavorites, removeFromFavorites } = NetflixSlice.actions
 
 export const store = configureStore({
   reducer: {

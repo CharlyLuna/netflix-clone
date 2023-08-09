@@ -31,7 +31,7 @@ const createArrayFromRawData = (results, moviesArray, genres) => {
     })
     if (movie.backdrop_path) {
       moviesArray.push({
-        name: movie?.original_name ? movie.original_name : movie.original_title,
+        name: movie?.original_name ?? movie.original_title,
         image: movie.backdrop_path,
         genres: movieGenres.slice(0, 3),
         overview: movie.overview

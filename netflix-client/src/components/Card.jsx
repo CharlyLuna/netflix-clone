@@ -1,9 +1,12 @@
 import { useRef, useState } from 'react'
 import { HoveredCard } from './HoveredCard'
+import { useMyFavoritesList } from '../hooks/useMyFavoritesList'
 
-export const Card = ({ movie, isLiked = false }) => {
+export const Card = ({ movie }) => {
   const { image, name, genres } = movie
   const [isHovered, setIsHovered] = useState(false)
+  const [isLiked, setIsLiked] = useState(false)
+  const { isOnFavorites, changeListStatus } = useMyFavoritesList({ movie })
   const cardRef = useRef()
 
   const handleHover = () => {
@@ -34,7 +37,17 @@ export const Card = ({ movie, isLiked = false }) => {
       />
 
       {
-        isHovered && <HoveredCard image={image} genres={genres} name={name} />
+        isHovered && (
+          <HoveredCard
+            image={image}
+            genres={genres}
+            name={name}
+            isLiked={isLiked}
+            changeLike={setIsLiked}
+            isOnFavorites={isOnFavorites}
+            changeListStatus={changeListStatus}
+          />
+        )
       }
 
     </div>
