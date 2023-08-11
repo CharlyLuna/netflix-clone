@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import logo from '../assets/logo.webp'
 import smallLogo from '../assets/logo-small.webp'
 import { Search } from './Search'
@@ -11,6 +11,7 @@ export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false)
   const [dropDownIsHovered, setDropDownIsHovered] = useState(false)
   const debouncedHoverValue = useDebounce(dropDownIsHovered, 300)
+  const navigate = useNavigate()
 
   useEffect(() => {
     const handleScroll = (e) => {
@@ -33,7 +34,7 @@ export const Navbar = () => {
     >
       {/* LEFT SIDE OF NAVBAR */}
       <nav className='flex items-center gap-2 md:gap-8'>
-        <a href='/'>
+        <a href='#' onClick={() => navigate('/')}>
           <picture>
             <source media='(max-width: 767px)' srcSet={smallLogo} />
             <source media='(min-width: 768px)' srcSet={logo} />

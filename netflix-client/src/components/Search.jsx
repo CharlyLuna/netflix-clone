@@ -10,6 +10,8 @@ export const Search = () => {
           ${showSearch ? 'show-search' : ''}`}
     >
       <button
+        type='button'
+        aria-label='Search'
         className='text-lg'
         onFocus={() => setShowSearch(true)}
         onBlur={() => {
