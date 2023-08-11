@@ -26,7 +26,7 @@ export const CardSlider = ({ data, title }) => {
         >
           {
           data.map((movie, index) => (
-            <Card key={`${movie}_${index}`} movie={movie} />
+            <Card key={`${movie}_${index}`} movie={movie} withOffset />
           ))
         }
         </div>
