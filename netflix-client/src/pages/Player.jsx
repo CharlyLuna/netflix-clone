@@ -13,7 +13,7 @@ export const Player = () => {
         >
           <AngleLeftIcon />
         </button>
-        <video className='h-full w-full object-cover' src='/netflix-intro.mp4' autoPlay loop controls muted />
+        <video className='h-full w-full object-cover' src='/netflix-intro.mp4' autoPlay loop controls />
       </div>
     </div>
   )

@@ -37,7 +37,6 @@ export const Billboard = ({ movie }) => {
           </button>
           <button
             className='billboard-buttons'
-            onClick={() => navigate('/details')}
           >
             <MoreInfoIcon /> More info
           </button>
