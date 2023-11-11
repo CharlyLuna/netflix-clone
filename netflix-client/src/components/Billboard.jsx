@@ -32,11 +32,13 @@ export const Billboard = ({ movie }) => {
           <button
             className='billboard-buttons'
             onClick={() => navigate('/player')}
+            aria-label={`Play ${name}`}
           >
             <VideoPlayIcon /> Play
           </button>
           <button
             className='billboard-buttons'
+            aria-label={`More info on ${name}`}
           >
             <MoreInfoIcon /> More info
           </button>
