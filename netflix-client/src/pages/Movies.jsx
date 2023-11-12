@@ -34,7 +34,7 @@ export const Movies = () => {
     <div className='bg-zinc-900'>
       <Navbar />
       <div className='mt-28'>
-        <SelectGenres genres={genres} onGenreChange={handleGenreChange} />
+        <SelectGenres genres={genres} onGenreChange={handleGenreChange} title='Movies' />
         {
           movies.length > 0
             ? <Slider movies={movies} titles={MOVIEPAGE_TITLES} />

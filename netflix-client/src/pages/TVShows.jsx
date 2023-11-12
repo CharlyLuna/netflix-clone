@@ -34,7 +34,7 @@ export const TVShows = () => {
     <div className='bg-zinc-900'>
       <Navbar />
       <div className='mt-28'>
-        <SelectGenres genres={genres} onGenreChange={handleGenreChange} />
+        <SelectGenres genres={genres} onGenreChange={handleGenreChange} title='TV Shows' />
         {
           tvShows.length > 0
             ? <Slider movies={tvShows} titles={TVPAGE_TITLES} />
