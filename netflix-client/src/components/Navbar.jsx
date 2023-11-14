@@ -33,7 +33,7 @@ export const Navbar = () => {
       ${isScrolled ? 'bg-zinc-900' : ''}`}
     >
       {/* LEFT SIDE OF NAVBAR */}
-      <nav className='flex items-center gap-2 md:gap-8'>
+      <nav aria-label='navbar' className='flex items-center gap-2 md:gap-8'>
         <a href='#' onClick={() => navigate('/')}>
           <picture>
             <source media='(max-width: 767px)' srcSet={smallLogo} />
