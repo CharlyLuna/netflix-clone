@@ -6,7 +6,9 @@ export const DropDownMenu = ({ isVisible, setVisibility }) => {
     <div
       className='fadeIn absolute right-6 lg:right-16 top-14 flex flex-col items-end pt-2'
       onMouseEnter={() => setVisibility(true)}
+      onFocus={() => setVisibility(true)}
       onMouseLeave={() => setVisibility(false)}
+      onBlur={() => setVisibility(false)}
     >
       <div className='arrow-up mr-7' />
       <div className='flex flex-col items-center justify-center w-[200px] h-fit bg-black'>

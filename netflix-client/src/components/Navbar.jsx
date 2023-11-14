@@ -60,7 +60,9 @@ export const Navbar = () => {
           href='#account'
           className='flex items-center gap-2'
           onMouseEnter={() => setDropDownIsHovered(true)}
+          onClick={() => setDropDownIsHovered(true)}
           onMouseLeave={() => setDropDownIsHovered(false)}
+          onBlur={() => setDropDownIsHovered(false)}
         >
           <img className='h-7 w-7 rounded-md' src='/default-profile-pic.webp' alt='profile picture' />
           <div className='arrow-down' />
