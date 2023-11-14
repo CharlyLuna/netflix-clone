@@ -25,6 +25,7 @@ export const Search = () => {
         placeholder='Search'
         className={`search-bar ${showSearch ? 'show-search-bar' : ''}`}
         onMouseEnter={() => setInputHover(true)}
+        onFocus={() => setShowSearch(true)}
         onMouseLeave={() => setInputHover(false)}
         onBlur={() => {
           setShowSearch(false)
