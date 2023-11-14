@@ -22,7 +22,10 @@ export const Billboard = ({ movie }) => {
       <div className='md:m-auto w-full absolute bottom-32'>
         {/* Serie name */}
         <div className='max-md:mx-10 md:ms-20 text-center md:text-start'>
-          <h1 className='text-4xl lg:text-5xl font-extrabold md:w-[70%]'>{name}</h1>
+          <h1 className='text-4xl lg:text-5xl font-extrabold md:w-[70%]'
+            id='poster_title'>
+            {name}
+          </h1>
           <p className='text-sm xl:text-base font-normal w-[65%] xl:w-[50%] py-4 max-md:hidden'>
             {overview}
           </p>
@@ -32,11 +35,15 @@ export const Billboard = ({ movie }) => {
           <button
             className='billboard-buttons'
             onClick={() => navigate('/player')}
+            id='play_btn'
+            aria-labelledby='play_btn poster_title '
           >
             <VideoPlayIcon /> Play
           </button>
           <button
             className='billboard-buttons'
+            id='more_info_btn'
+            aria-labelledby='more_info_btn poster_title'
           >
             <MoreInfoIcon /> More info
           </button>
