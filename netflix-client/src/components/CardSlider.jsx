@@ -17,6 +17,7 @@ export const CardSlider = ({ data, title }) => {
         className='flex justify-center group/slider-container'
       >
         <button
+          aria-label='Slide left'
           className={`${sliderIsActive ? 'opacity-100' : 'opacity-0'} bg-black/40 focus:bg-black/60 hover:bg-black/60 transition-colors ease-in-out flex-grow-0 w-9 lg:w-12 shrink-0 z-10 rounded-e-xl group px-1 group-hover/slider-container:opacity-100 my-1`}
           onClick={() => handleSlide('left')}
           onFocus={() => setSliderIsActive(true)}
@@ -35,6 +36,7 @@ export const CardSlider = ({ data, title }) => {
         }
         </div>
         <button
+          aria-label='Slide right'
           className={`${sliderIsActive ? 'opacity-100' : 'opacity-0'} bg-black/40 focus:bg-black/60 hover:bg-black/60 transition-colors ease-in-out flex-grow-0 w-9 md:w-12 shrink-0 z-10 rounded-s-xl group px-2 group-hover/slider-container:opacity-100 my-1`}
           onClick={() => handleSlide('right')}
           onFocus={() => setSliderIsActive(true)}
