@@ -16,3 +16,8 @@ Tests were made while learning Jest, but they are for an older version of the pa
 ## Screenshots
 ![netflix-home-v1](https://github.com/CharlyLuna/netflix-clone/assets/73366394/d465b2bc-81cd-44de-a99e-9c64ec68d959)
 
+## Run the project from your local machine
+1. Do a git clone https://github.com/CharlyLuna/netflix-clone.git
+2. cd into the netflix-client folder and run npm i
+3. Run the command npm run dev
+4. Open your browser using the url localhost:5173
