@@ -8,9 +8,9 @@ import { SelectGenres } from '../components/SelectGenres'
 import { MOVIEPAGE_TITLES } from '../utils/constants'
 
 export const Movies = () => {
-  const genresLoaded = useSelector(state => state.netflix.genresLoaded)
-  const movies = useSelector(state => state.netflix.movies)
-  const genres = useSelector(state => state.netflix.genres)
+  const genresLoaded = useSelector((state) => state.netflix.genresLoaded)
+  const movies = useSelector((state) => state.netflix.movies)
+  const genres = useSelector((state) => state.netflix.genres)
   const dispatch = useDispatch()
 
   // Scroll to top of the page when component is mounted
@@ -22,7 +22,9 @@ export const Movies = () => {
     if (!genresLoaded) {
       dispatch(getGenres())
     } else {
-      if (movies.length === 0) dispatch(fetchDataByGenre({ genre: genres[0].name, type: 'movie' }))
+      if (movies.length === 0) {
+        dispatch(fetchDataByGenre({ genre: genres[0].id, type: 'movie' }))
+      }
     }
   }, [genresLoaded])
 
@@ -35,11 +37,13 @@ export const Movies = () => {
       <Navbar />
       <div className='mt-28'>
         <SelectGenres genres={genres} onGenreChange={handleGenreChange} />
-        {
-          movies.length > 0
-            ? <Slider movies={movies} titles={MOVIEPAGE_TITLES} />
-            : <NotAvailable />
-        }
+        {movies.length > 0
+          ? (
+            <Slider movies={movies} titles={MOVIEPAGE_TITLES} />
+            )
+          : (
+            <NotAvailable />
+            )}
       </div>
     </div>
   )

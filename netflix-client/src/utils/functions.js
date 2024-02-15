@@ -9,18 +9,16 @@ export const getRandomMovie = (movies) => {
 export const getRawData = async (api, genres, paging) => {
   const moviesArray = []
   for (let i = 1; moviesArray.length < 36 && i < 4; i++) {
-    const { data: { results } } = await axios(
-      `${api}${paging ? `&page=${i}` : ''}`
-    )
+    const { data: { results } } = await axios(`${api}${paging ? `&page=${i}` : ''}`)
     createArrayFromRawData(results, moviesArray, genres)
   }
   return moviesArray
 }
 
 const createArrayFromRawData = (results, moviesArray, genres) => {
-  results.forEach(movie => {
+  results.forEach((movie) => {
     const movieGenres = []
-    movie.genre_ids.forEach(genre => {
+    movie.genre_ids.forEach((genre) => {
       const name = genres.find(({ id }) => id === genre)
       if (name) movieGenres.push(name.name)
     })

@@ -1,8 +1,4 @@
-import {
-  configureStore,
-  createAsyncThunk,
-  createSlice
-} from '@reduxjs/toolkit'
+import { configureStore, createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import axios from 'axios'
 import { getRawData } from '../utils/functions'
 
@@ -75,7 +71,7 @@ const NetflixSlice = createSlice({
     },
     removeFromFavorites: (state, action) => {
       const { name } = action.payload
-      state.myList = state.myList.filter(movie => movie.name !== name)
+      state.myList = state.myList.filter((movie) => movie.name !== name)
     }
   },
   extraReducers: (builder) => {
