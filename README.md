@@ -16,5 +16,3 @@ Tests were made while learning Jest, but they are for an older version of the pa
 ## Screenshots
 ![netflix-home-v1](https://github.com/CharlyLuna/netflix-clone/assets/73366394/d465b2bc-81cd-44de-a99e-9c64ec68d959)
 
-## LIVE DEMO OF THE PAGE
-https://netflix-clone-chluna.netlify.app/
