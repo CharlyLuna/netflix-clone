@@ -1,7 +1,5 @@
 import { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import logo from '../assets/logo.webp'
-import smallLogo from '../assets/logo-small.webp'
 import { Search } from './Search'
 import { NAVBAR_LINKS } from '../utils/constants'
 import { DropDownMenu } from './DropDownMenu'
@@ -34,12 +32,9 @@ export const Navbar = () => {
     >
       {/* LEFT SIDE OF NAVBAR */}
       <nav className='flex items-center gap-2 md:gap-8'>
-        <a href='#' onClick={() => navigate('/')}>
-          <picture>
-            <source media='(max-width: 767px)' srcSet={smallLogo} />
-            <source media='(min-width: 768px)' srcSet={logo} />
-            <img className='h-14 aspect-[1/1] md:aspect-[2.38/1]' src={logo} alt='Netflix logo' />
-          </picture>
+        <a className='text-xl text-[#e50914] font-bold px-2' href='#' onClick={() => navigate('/')}>
+          <p className='hidden md:block'>Moonflix</p>
+          <p className='block md:hidden'>MF</p>
         </a>
         <ul className='flex list-none gap-4 sm:gap-8'>
           {

@@ -13,7 +13,7 @@ export const Header = ({ login }) => {
   return (
     <div className='flex items-center justify-between px-8'>
       <div>
-        <p className='text-[#e50914] font-bold text-2xl'>MovieApp HUB</p>
+        <p className='text-[#e50914] font-bold text-2xl'>Moonflix</p>
       </div>
       <button
         className='py-2 px-4 bg-[#e50914] border-none cursor-pointer rounded-md
