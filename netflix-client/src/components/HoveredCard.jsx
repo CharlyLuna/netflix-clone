@@ -9,7 +9,7 @@ export const HoveredCard = ({ name, genres, image, isLiked, changeLike, isOnFavo
     zoomIn h-full hovered-card'
     >
       <video
-        src='/netflix-intro.mp4'
+        src='/video-intro.mp4'
         poster={`https://image.tmdb.org/t/p/w500${image}`}
         autoPlay
         muted

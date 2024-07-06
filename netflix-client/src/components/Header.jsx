@@ -1,5 +1,4 @@
 import { useNavigate } from 'react-router-dom'
-import logo from '../assets/logo.webp'
 
 export const Header = ({ login }) => {
   const navigate = useNavigate()
@@ -14,7 +13,7 @@ export const Header = ({ login }) => {
   return (
     <div className='flex items-center justify-between px-8'>
       <div>
-        <img className='h-20' src={logo} alt='Netflix logo' />
+        <p className='text-[#e50914] font-bold text-2xl'>MovieApp HUB</p>
       </div>
       <button
         className='py-2 px-4 bg-[#e50914] border-none cursor-pointer rounded-md

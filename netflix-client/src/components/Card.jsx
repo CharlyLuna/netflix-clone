@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react'
 import { HoveredCard } from './HoveredCard'
 import { useMyFavoritesList } from '../hooks/useMyFavoritesList'
+import { useNavigate } from 'react-router-dom'
 
 export const Card = ({ movie, withOffset }) => {
   const { image, name, genres } = movie
@@ -8,6 +9,7 @@ export const Card = ({ movie, withOffset }) => {
   const [isLiked, setIsLiked] = useState(false)
   const { isOnFavorites, changeListStatus } = useMyFavoritesList({ movie })
   const cardRef = useRef()
+  const navigate = useNavigate()
 
   const handleHover = () => {
     if (!withOffset) {
@@ -29,6 +31,9 @@ export const Card = ({ movie, withOffset }) => {
       className='card group bg-zinc-900 relative aspect-[16/9] p-1'
       onMouseEnter={() => handleHover()}
       onMouseLeave={() => setIsHovered(false)}
+      onClick={() => {
+        navigate('/player')
+      }}
       ref={cardRef}
     >
       <img
