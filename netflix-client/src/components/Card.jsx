@@ -32,7 +32,7 @@ export const Card = ({ movie, withOffset }) => {
       onMouseEnter={() => handleHover()}
       onMouseLeave={() => setIsHovered(false)}
       onClick={() => {
-        navigate('/player')
+        if (!isHovered) navigate('/player')
       }}
       ref={cardRef}
     >

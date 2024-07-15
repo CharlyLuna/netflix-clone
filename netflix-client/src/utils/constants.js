@@ -10,7 +10,6 @@ export const HOMEPAGE_TITLES = ['Trending Now', 'Recently Added', 'Popular On Mo
 export const MOVIEPAGE_TITLES = ['Trending Now', 'New Releases', 'Blockbuster Movies', 'Popular On Moonflix', 'Top Picks For You', 'Critically Acclaimed']
 export const TVPAGE_TITLES = ['Trending Now', 'New Shows', 'Awarded shows', 'Popular On Moonflix', 'Top Picks For You', 'Critically Acclaimed']
 export const NAVBAR_LINKS = [
-  { name: 'Home', link: '/' },
   { name: 'TV Shows', link: '/tv' },
   { name: 'Movies', link: '/movies' },
   { name: 'My List', link: '/mylist' }

@@ -32,7 +32,7 @@ export const Navbar = () => {
     >
       {/* LEFT SIDE OF NAVBAR */}
       <nav className='flex items-center gap-2 md:gap-8'>
-        <a className='text-xl text-[#e50914] font-bold px-2' href='#' onClick={() => navigate('/')}>
+        <a className='text-xl lg:text-2xl text-[#e50914] font-bold px-2' href='/' onClick={() => navigate('/')}>
           <p className='hidden md:block'>Moonflix</p>
           <p className='block md:hidden'>MF</p>
         </a>
